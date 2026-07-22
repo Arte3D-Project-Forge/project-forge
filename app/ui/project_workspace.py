@@ -1,4 +1,7 @@
 import customtkinter as ctk
+import os
+
+from app.ui.document_viewer import DocumentViewer
 
 
 class ProjectWorkspace(ctk.CTkToplevel):
@@ -7,243 +10,178 @@ class ProjectWorkspace(ctk.CTkToplevel):
 
         super().__init__(parent)
 
+
         self.project = project
-        self.modules = {}
+
+        self.viewer = None
+
 
         self.transient(parent)
         self.grab_set()
         self.focus_force()
         self.lift()
 
+
         self.title(
             f"Workspace - {project['name']}"
         )
 
-        self.geometry(
-            "1100x700"
-        )
 
-        self.create_layout()
+        self.geometry("900x600")
 
 
-    def create_layout(self):
-
-        self.create_header()
-
-        self.create_main_area()
-
-        self.create_status_bar()
+        self.create_ui()
 
 
 
-    def create_header(self):
-
-        header = ctk.CTkFrame(
-            self
-        )
-
-        header.pack(
-            fill="x",
-            padx=10,
-            pady=10
-        )
+    def create_ui(self):
 
 
-        title = ctk.CTkLabel(
-            header,
+        header = ctk.CTkLabel(
+            self,
             text=self.project["name"],
-            font=(
-                "Arial",
-                26,
-                "bold"
-            )
+            font=("Arial", 32, "bold")
         )
 
-        title.pack(
-            side="left",
-            padx=20
-        )
+        header.pack(pady=20)
+
 
 
         engine = ctk.CTkLabel(
-            header,
+            self,
             text=f"Engine: {self.project['engine']}",
-            font=(
-                "Arial",
-                14
-            )
+            font=("Arial", 18)
         )
 
-        engine.pack(
-            side="right",
-            padx=20
-        )
+        engine.pack()
 
 
-
-    def create_main_area(self):
-
-        container = ctk.CTkFrame(
-            self
-        )
-
-        container.pack(
-            fill="both",
-            expand=True,
-            padx=10,
-            pady=5
-        )
-
-
-        self.sidebar = ctk.CTkFrame(
-            container,
-            width=220
-        )
-
-        self.sidebar.pack(
-            side="left",
-            fill="y",
-            padx=5
-        )
-
-
-        self.content_area = ctk.CTkFrame(
-            container
-        )
-
-        self.content_area.pack(
-            side="right",
-            fill="both",
-            expand=True,
-            padx=5
-        )
-
-
-        self.create_sidebar()
-
-        self.show_welcome()
-
-
-
-    def create_sidebar(self):
 
         title = ctk.CTkLabel(
-            self.sidebar,
-            text="MODULES",
-            font=(
-                "Arial",
-                18,
-                "bold"
-            )
+            self,
+            text="MÓDULOS DO PROJETO",
+            font=("Arial", 22, "bold")
         )
 
-        title.pack(
-            pady=20
+        title.pack(pady=30)
+
+
+
+        frame = ctk.CTkFrame(self)
+
+        frame.pack(
+            padx=40,
+            pady=10,
+            fill="both",
+            expand=True
         )
+
 
 
         modules = [
 
-            "Documents",
+            ("📄 Game Design", self.open_game_design),
 
-            "Game Design",
+            ("📜 Lore", self.open_lore),
 
-            "Lore",
+            ("🗺 Roadmap", self.open_roadmap),
 
-            "Roadmap",
+            ("🎨 Art Studio", self.open_art_studio),
 
-            "Art Studio",
+            ("🎵 Audio Studio", self.not_ready),
 
-            "Audio Studio",
+            ("🤖 AI Agents", self.not_ready),
 
-            "AI Agents"
+            ("⚙ Tools", self.not_ready)
 
         ]
 
 
-        for module in modules:
+
+        for text, command in modules:
+
 
             button = ctk.CTkButton(
-                self.sidebar,
-                text=module,
-                height=40,
-                command=lambda m=module: self.open_module(m)
+                frame,
+                text=text,
+                height=45,
+                command=command
             )
+
 
             button.pack(
-                fill="x",
-                padx=15,
-                pady=5
+                pady=8,
+                padx=80,
+                fill="x"
             )
 
 
 
-    def open_module(self, module_name):
-
-        self.clear_content()
+    def open_game_design(self):
 
 
-        label = ctk.CTkLabel(
-            self.content_area,
-            text=(
-                module_name
-                +
-                "\n\nModule ready for integration."
-            ),
-            font=(
-                "Arial",
-                20
-            )
-        )
-
-        label.pack(
-            expand=True
+        path = os.path.join(
+            self.project["path"],
+            "docs",
+            "GAME_DESIGN.md"
         )
 
 
-
-    def show_welcome(self):
-
-        self.clear_content()
-
-
-        label = ctk.CTkLabel(
-            self.content_area,
-            text=(
-                "PROJECT FORGE WORKSPACE\n\n"
-                "Select a module"
-            ),
-            font=(
-                "Arial",
-                22,
-                "bold"
-            )
-        )
-
-        label.pack(
-            expand=True
-        )
-
-
-
-    def clear_content(self):
-
-        for widget in self.content_area.winfo_children():
-
-            widget.destroy()
-
-
-
-    def create_status_bar(self):
-
-        status = ctk.CTkLabel(
+        self.viewer = DocumentViewer(
             self,
-            text="Project Forge | Workspace Release 1.0",
-            anchor="w"
+            "Game Design",
+            path
         )
 
-        status.pack(
-            fill="x",
-            padx=10,
-            pady=5
+
+        self.viewer.focus()
+
+
+
+    def open_lore(self):
+
+
+        path = os.path.join(
+            self.project["path"],
+            "docs",
+            "LORE.md"
+        )
+
+
+        self.viewer = DocumentViewer(
+            self,
+            "Lore",
+            path
+        )
+
+
+        self.viewer.focus()
+
+
+
+    def open_roadmap(self):
+
+
+        path = os.path.join(
+            self.project["path"],
+            "docs",
+            "ROADMAP.md"
+        )
+
+
+        self.viewer = DocumentViewer(
+            self,
+            "Roadmap",
+            path
+        )
+
+
+        self.viewer.focus()
+
+
+
+    def not_ready(self):
+
+        print(
+            "Módulo em desenvolvimento"
         )
