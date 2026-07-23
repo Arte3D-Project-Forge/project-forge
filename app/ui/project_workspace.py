@@ -3,8 +3,14 @@ import os
 
 from app.ui.document_viewer import DocumentViewer
 
+from app.core.workspace_controller import WorkspaceController
+from app.core.module_registry import ModuleRegistry
+from app.core.module_loader import ModuleLoader
+
+
 
 class ProjectWorkspace(ctk.CTkToplevel):
+
 
     def __init__(self, parent, project):
 
@@ -27,12 +33,44 @@ class ProjectWorkspace(ctk.CTkToplevel):
         )
 
 
-        self.geometry("900x600")
+        self.geometry(
+            "1000x700"
+        )
 
+
+        self.setup_modules()
 
         self.create_ui()
 
 
+
+    # ==========================
+    # MODULE SYSTEM
+    # ==========================
+
+    def setup_modules(self):
+
+
+        self.registry = ModuleRegistry()
+
+
+        self.loader = ModuleLoader(
+            self.registry
+        )
+
+
+        self.loader.load_modules()
+
+
+        self.controller = WorkspaceController(
+            self.registry
+        )
+
+
+
+    # ==========================
+    # UI
+    # ==========================
 
     def create_ui(self):
 
@@ -40,148 +78,216 @@ class ProjectWorkspace(ctk.CTkToplevel):
         header = ctk.CTkLabel(
             self,
             text=self.project["name"],
-            font=("Arial", 32, "bold")
+            font=("Arial",32,"bold")
         )
 
-        header.pack(pady=20)
+
+        header.pack(
+            pady=20
+        )
 
 
 
         engine = ctk.CTkLabel(
             self,
             text=f"Engine: {self.project['engine']}",
-            font=("Arial", 18)
+            font=("Arial",18)
         )
+
 
         engine.pack()
 
 
 
-        title = ctk.CTkLabel(
-            self,
-            text="MÓDULOS DO PROJETO",
-            font=("Arial", 22, "bold")
+        container = ctk.CTkFrame(
+            self
         )
 
-        title.pack(pady=30)
 
-
-
-        frame = ctk.CTkFrame(self)
-
-        frame.pack(
-            padx=40,
-            pady=10,
+        container.pack(
             fill="both",
-            expand=True
+            expand=True,
+            padx=40,
+            pady=30
+        )
+
+
+        self.create_modules_section(
+            container
+        )
+
+
+        self.create_documents_section(
+            container
         )
 
 
 
-        modules = [
+    # ==========================
+    # MODULES
+    # ==========================
 
-            ("📄 Game Design", self.open_game_design),
+    def create_modules_section(self,parent):
 
-            ("📜 Lore", self.open_lore),
 
-            ("🗺 Roadmap", self.open_roadmap),
+        title = ctk.CTkLabel(
+            parent,
+            text="PROJECT MODULES",
+            font=("Arial",20,"bold")
+        )
 
-            ("🎨 Art Studio", self.open_art_studio),
 
-            ("🎵 Audio Studio", self.not_ready),
+        title.pack(
+            pady=10
+        )
 
-            ("🤖 AI Agents", self.not_ready),
 
-            ("⚙ Tools", self.not_ready)
+
+        modules = (
+            self.controller
+            .get_available_modules()
+        )
+
+
+        for module in modules:
+
+
+            button = ctk.CTkButton(
+                parent,
+                text=module["name"],
+                height=45,
+                command=lambda m=module:
+                    self.open_module(m)
+            )
+
+
+            button.pack(
+                fill="x",
+                padx=80,
+                pady=5
+            )
+
+
+
+    def open_module(self,module):
+
+
+        print(
+            "Abrindo módulo:",
+            module["name"]
+        )
+
+
+
+    # ==========================
+    # DOCUMENTS
+    # ==========================
+
+    def create_documents_section(self,parent):
+
+
+        title = ctk.CTkLabel(
+            parent,
+            text="PROJECT DOCUMENTS",
+            font=("Arial",20,"bold")
+        )
+
+
+        title.pack(
+            pady=(30,10)
+        )
+
+
+
+        documents = [
+
+            (
+                "Game Design",
+                self.open_game_design
+            ),
+
+            (
+                "Lore",
+                self.open_lore
+            ),
+
+            (
+                "Roadmap",
+                self.open_roadmap
+            )
 
         ]
 
 
 
-        for text, command in modules:
+        for text,command in documents:
 
 
             button = ctk.CTkButton(
-                frame,
+                parent,
                 text=text,
-                height=45,
+                height=40,
                 command=command
             )
 
 
             button.pack(
-                pady=8,
+                fill="x",
                 padx=80,
-                fill="x"
+                pady=5
             )
 
 
 
+    # ==========================
+    # DOCUMENT VIEWER
+    # ==========================
+
     def open_game_design(self):
 
 
-        path = os.path.join(
-            self.project["path"],
-            "docs",
+        self.open_document(
+            "Game Design",
             "GAME_DESIGN.md"
         )
-
-
-        self.viewer = DocumentViewer(
-            self,
-            "Game Design",
-            path
-        )
-
-
-        self.viewer.focus()
 
 
 
     def open_lore(self):
 
 
-        path = os.path.join(
-            self.project["path"],
-            "docs",
+        self.open_document(
+            "Lore",
             "LORE.md"
         )
-
-
-        self.viewer = DocumentViewer(
-            self,
-            "Lore",
-            path
-        )
-
-
-        self.viewer.focus()
 
 
 
     def open_roadmap(self):
 
 
+        self.open_document(
+            "Roadmap",
+            "ROADMAP.md"
+        )
+
+
+
+    def open_document(self,title,file):
+
+
         path = os.path.join(
             self.project["path"],
             "docs",
-            "ROADMAP.md"
+            file
         )
 
 
         self.viewer = DocumentViewer(
             self,
-            "Roadmap",
+            title,
             path
         )
 
 
         self.viewer.focus()
-
-
-
-    def not_ready(self):
-
-        print(
-            "Módulo em desenvolvimento"
-        )
