@@ -7,7 +7,7 @@ from app.modules.documents.ui.documents_window import DocumentsWindow
 class DocumentsModule(ForgeModule):
 
 
-    def __init__(self):
+    def __init__(self, project_path=None):
 
         super().__init__(
 
@@ -24,6 +24,8 @@ class DocumentsModule(ForgeModule):
         )
 
 
+        self.project_path = project_path
+
         self.window = None
 
 
@@ -37,14 +39,20 @@ class DocumentsModule(ForgeModule):
     def open(self):
 
 
-        self.window = DocumentsWindow()
+        self.window = DocumentsWindow(
+
+            project_path=self.project_path
+
+        )
 
 
         self.window.focus_force()
 
 
         return (
+
             "Documents UI opened."
+
         )
 
 
@@ -55,7 +63,15 @@ class DocumentsModule(ForgeModule):
         if self.window:
 
 
-            self.window.destroy()
+            try:
+
+                self.window.destroy()
+
+
+            except Exception:
+
+                pass
+
 
 
             self.window = None
@@ -63,5 +79,7 @@ class DocumentsModule(ForgeModule):
 
 
         return (
+
             "Documents shutdown."
+
         )
