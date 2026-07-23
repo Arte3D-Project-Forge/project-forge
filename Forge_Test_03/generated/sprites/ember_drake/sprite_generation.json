@@ -1,50 +1,17 @@
 {
     "asset": "ember_drake",
     "type": "sprite",
-    "provider": "mock",
+    "provider": "openai",
     "animations": [
-        "idle",
-        "walk",
-        "attack",
-        "hurt",
-        "death"
+        "idle"
     ],
     "files": [
         {
             "status": "generated",
-            "provider": "mock",
-            "filename": "ember_drake_idle_001",
-            "prompt": "Ancient fire dragon HD pixel art RPG character 48x48 idle animation",
-            "created_at": "2026-07-23T13:48:20.756073"
-        },
-        {
-            "status": "generated",
-            "provider": "mock",
-            "filename": "ember_drake_walk_001",
-            "prompt": "Ancient fire dragon HD pixel art RPG character 48x48 walk animation",
-            "created_at": "2026-07-23T13:48:20.757360"
-        },
-        {
-            "status": "generated",
-            "provider": "mock",
-            "filename": "ember_drake_attack_001",
-            "prompt": "Ancient fire dragon HD pixel art RPG character 48x48 attack animation",
-            "created_at": "2026-07-23T13:48:20.758522"
-        },
-        {
-            "status": "generated",
-            "provider": "mock",
-            "filename": "ember_drake_hurt_001",
-            "prompt": "Ancient fire dragon HD pixel art RPG character 48x48 hurt animation",
-            "created_at": "2026-07-23T13:48:20.759657"
-        },
-        {
-            "status": "generated",
-            "provider": "mock",
-            "filename": "ember_drake_death_001",
-            "prompt": "Ancient fire dragon HD pixel art RPG character 48x48 death animation",
-            "created_at": "2026-07-23T13:48:20.760791"
+            "provider": "openai",
+            "file": "Forge_Test_03/generated\\sprites\\ember_drake\\idle\\ember_drake_idle_001.png",
+            "created_at": "2026-07-23T15:03:09.401985"
         }
     ],
-    "created_at": "2026-07-23T13:48:20.761306"
+    "created_at": "2026-07-23T15:03:09.402350"
 }
