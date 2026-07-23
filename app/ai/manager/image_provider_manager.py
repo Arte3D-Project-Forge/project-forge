@@ -1,6 +1,10 @@
 from app.core.config_manager import ConfigManager
 
+
 from app.ai.providers.images.mock_image_provider import MockImageProvider
+
+from app.ai.providers.images.openai_image_provider import OpenAIImageProvider
+
 
 
 
@@ -39,6 +43,13 @@ class ImageProviderManager:
 
 
             return MockImageProvider()
+
+
+
+        if self.provider_name == "openai":
+
+
+            return OpenAIImageProvider()
 
 
 
