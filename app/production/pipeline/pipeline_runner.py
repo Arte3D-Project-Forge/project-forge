@@ -7,6 +7,7 @@ from app.ai.provider_manager import ProviderManager
 
 from app.ai.workers.lore_worker import LoreWorker
 from app.ai.workers.sprite_worker import SpriteWorker
+from app.ai.workers.tile_worker import TileWorker
 
 
 
@@ -54,6 +55,11 @@ class PipelineRunner:
         )
 
 
+        self.tile_worker = TileWorker(
+            self.provider
+        )
+
+
 
     def run(self):
 
@@ -61,12 +67,13 @@ class PipelineRunner:
             "========== PROJECT FORGE =========="
         )
 
+
         print(
             "Starting Production Pipeline..."
         )
 
-        print()
 
+        print()
 
 
         package_path = self.package.build()
@@ -151,7 +158,28 @@ class PipelineRunner:
 
 
 
+        tile_folder = self.tile_worker.run(
+
+            self.job,
+
+            package_path
+
+        )
+
+
+        print(
+            "[OK] Tile package generated"
+        )
+
+
+        print(
+            tile_folder
+        )
+
+
+
         print()
+
 
         print(
             "Production completed."
