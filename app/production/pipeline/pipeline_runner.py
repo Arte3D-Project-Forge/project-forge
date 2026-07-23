@@ -12,6 +12,8 @@ from app.ai.workers.animation_worker import AnimationWorker
 from app.ai.workers.audio_worker import AudioWorker
 from app.ai.workers.godot_worker import GodotWorker
 
+from app.quality.asset_quality_manager import AssetQualityManager
+
 
 
 class PipelineRunner:
@@ -48,6 +50,7 @@ class PipelineRunner:
         self.provider = ProviderManager()
 
 
+
         self.lore_worker = LoreWorker(
             self.provider
         )
@@ -78,8 +81,12 @@ class PipelineRunner:
         )
 
 
+        self.quality_manager = AssetQualityManager()
+
+
 
     def run(self):
+
 
         print(
             "========== PROJECT FORGE =========="
@@ -96,6 +103,7 @@ class PipelineRunner:
 
 
         package_path = self.package.build()
+
 
 
         print(
@@ -253,6 +261,21 @@ class PipelineRunner:
 
         print(
             godot_folder
+        )
+
+
+
+        quality_report = self.quality_manager.validate(
+
+            package_path
+
+        )
+
+
+        self.quality_manager.print_report(
+
+            quality_report
+
         )
 
 
