@@ -4,6 +4,7 @@ import base64
 from datetime import datetime
 
 from app.ai.providers.images.image_provider import ImageProvider
+from app.core.env_manager import EnvManager
 
 
 
@@ -17,7 +18,10 @@ class OpenAIImageProvider(ImageProvider):
     ):
 
 
-        self.api_key = os.getenv(
+        self.env = EnvManager()
+
+
+        self.api_key = self.env.get(
 
             "OPENAI_API_KEY"
 
@@ -26,9 +30,10 @@ class OpenAIImageProvider(ImageProvider):
 
         if not self.api_key:
 
+
             raise Exception(
 
-                "OPENAI_API_KEY not configured"
+                "OPENAI_API_KEY not configured in config/.env"
 
             )
 
@@ -43,15 +48,6 @@ class OpenAIImageProvider(ImageProvider):
         filename
 
     ):
-
-
-        """
-        OpenAI image generation provider.
-
-        This implementation prepares the
-        generation pipeline and API connection.
-
-        """
 
 
         try:
@@ -103,6 +99,7 @@ class OpenAIImageProvider(ImageProvider):
                 exist_ok=True
 
             )
+
 
 
             file_path = os.path.join(
