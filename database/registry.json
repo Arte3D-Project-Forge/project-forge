@@ -3,5 +3,10 @@
         "asset_id": 1,
         "name": "criar_um_dragão",
         "type": "character"
+    },
+    {
+        "asset_id": 2,
+        "name": "Criar um dragão de fogo ancestral pixel art para RPG",
+        "type": "character"
     }
 ]

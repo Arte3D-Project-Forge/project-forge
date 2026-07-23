@@ -7,5 +7,14 @@
         "version": "1.0",
         "status": "approved",
         "created_at": "2026-07-23T12:01:56.878112"
+    },
+    {
+        "id": 2,
+        "name": "Criar um dragão de fogo ancestral pixel art para RPG",
+        "type": "character",
+        "path": "Forge_Test_02\\generated\\JOB-20260723-0001",
+        "version": "1.0",
+        "status": "approved",
+        "created_at": "2026-07-23T12:04:55.896237"
     }
 ]

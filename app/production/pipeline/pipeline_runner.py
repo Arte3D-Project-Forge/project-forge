@@ -14,6 +14,8 @@ from app.ai.workers.godot_worker import GodotWorker
 
 from app.quality.asset_quality_manager import AssetQualityManager
 
+from app.database.asset_database import AssetDatabase
+
 
 
 class PipelineRunner:
@@ -82,6 +84,9 @@ class PipelineRunner:
 
 
         self.quality_manager = AssetQualityManager()
+
+
+        self.asset_database = AssetDatabase()
 
 
 
@@ -277,6 +282,48 @@ class PipelineRunner:
             quality_report
 
         )
+
+
+
+        if quality_report["status"] == "APPROVED":
+
+
+            asset = self.asset_database.register_asset(
+
+                asset_name=self.job.request,
+
+                asset_type="character",
+
+                package_path=package_path,
+
+                status="approved"
+
+            )
+
+
+            print()
+
+
+            print(
+                "[OK] Asset registered in database"
+            )
+
+
+            print(
+                asset
+            )
+
+
+
+        else:
+
+
+            print()
+
+
+            print(
+                "[FAILED] Asset not registered"
+            )
 
 
 
