@@ -9,6 +9,7 @@ from app.ai.workers.lore_worker import LoreWorker
 from app.ai.workers.sprite_worker import SpriteWorker
 from app.ai.workers.tile_worker import TileWorker
 from app.ai.workers.animation_worker import AnimationWorker
+from app.ai.workers.audio_worker import AudioWorker
 
 
 
@@ -62,6 +63,11 @@ class PipelineRunner:
 
 
         self.animation_worker = AnimationWorker(
+            self.provider
+        )
+
+
+        self.audio_worker = AudioWorker(
             self.provider
         )
 
@@ -138,6 +144,7 @@ class PipelineRunner:
             "[OK] Lore generated"
         )
 
+
         print(
             lore_file
         )
@@ -156,6 +163,7 @@ class PipelineRunner:
         print(
             "[OK] Sprite package generated"
         )
+
 
         print(
             sprite_folder
@@ -176,6 +184,7 @@ class PipelineRunner:
             "[OK] Tile package generated"
         )
 
+
         print(
             tile_folder
         )
@@ -195,8 +204,29 @@ class PipelineRunner:
             "[OK] Animation package generated"
         )
 
+
         print(
             animation_folder
+        )
+
+
+
+        audio_folder = self.audio_worker.run(
+
+            self.job,
+
+            package_path
+
+        )
+
+
+        print(
+            "[OK] Audio package generated"
+        )
+
+
+        print(
+            audio_folder
         )
 
 
