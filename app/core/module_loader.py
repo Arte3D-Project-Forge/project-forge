@@ -1,6 +1,7 @@
 from app.modules.documents.module import DocumentsModule
 
 
+
 class ModuleLoader:
 
 
@@ -12,6 +13,7 @@ class ModuleLoader:
 
     def load_modules(self):
 
+
         modules = [
 
             DocumentsModule()
@@ -19,11 +21,14 @@ class ModuleLoader:
         ]
 
 
+
         for module in modules:
 
+
             self.registry.register(
-                module.get_info()
+                module
             )
+
 
 
         return modules

@@ -16,18 +16,30 @@ class ModuleManager:
     def initialize_modules(self):
 
 
-        modules = self.registry.get_all_modules()
+        modules = self.registry.get_registered_instances()
 
 
         for module in modules:
 
+
+            info = module.get_info()
+
+
+            module.initialize()
+
+
+
             self.loaded_modules[
-                module["id"]
+                info["id"]
             ] = {
 
-                "info": module,
+
+                "info": info,
+
+                "instance": module,
 
                 "status": "initialized"
+
 
             }
 
@@ -46,7 +58,7 @@ class ModuleManager:
 
 
 
-    def get_module(self,module_id):
+    def get_module(self, module_id):
 
 
         return self.loaded_modules.get(
@@ -55,7 +67,43 @@ class ModuleManager:
 
 
 
+    def open_module(self, module_id):
+
+
+        module_data = self.get_module(
+            module_id
+        )
+
+
+        if not module_data:
+
+
+            return "Module not found"
+
+
+
+        module = module_data[
+            "instance"
+        ]
+
+
+        return module.open()
+
+
+
     def shutdown_modules(self):
+
+
+        for module_data in self.loaded_modules.values():
+
+
+            module = module_data[
+                "instance"
+            ]
+
+
+            module.shutdown()
+
 
 
         self.loaded_modules.clear()
