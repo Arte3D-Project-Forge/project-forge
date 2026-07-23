@@ -1,77 +1,76 @@
-from app.core.module_manager import ModuleManager
-
-
-
 class WorkspaceController:
 
 
-    def __init__(self, registry):
+    def __init__(
+        self,
+        registry
+    ):
 
         self.registry = registry
 
 
-        self.module_manager = ModuleManager(
-            registry
-        )
 
+    def get_modules(self):
 
-    def initialize(self):
-
-
-        return (
-            self.module_manager
-            .initialize_modules()
-        )
+        return self.registry.modules.values()
 
 
 
-    def get_available_modules(self):
+    def open_module(
+        self,
+        module_id
+    ):
 
 
-        return (
-            self.registry
-            .get_all_modules()
-        )
-
-
-
-    def get_module(self, module_id):
-
-
-        return (
-            self.registry
-            .get_module(module_id)
-        )
-
-
-
-    def open_module(self, module_id):
-
-
-        module = (
-            self.module_manager
-            .get_module(module_id)
+        module = self.registry.get_module(
+            module_id
         )
 
 
         if not module:
 
-            return (
-                "Module not found"
+            return "Module not found."
+
+
+
+        return module.open()
+
+
+
+    def initialize_modules(self):
+
+
+        results = []
+
+
+        for module in self.registry.modules.values():
+
+
+            results.append(
+
+                module.initialize()
+
             )
 
 
-
-        return (
-            f"Opening module: {module_id}"
-        )
+        return results
 
 
 
-    def shutdown(self):
+    def shutdown_modules(self):
 
 
-        return (
-            self.module_manager
-            .shutdown_modules()
-        )
+        results = []
+
+
+        for module in self.registry.modules.values():
+
+
+            results.append(
+
+                module.shutdown()
+
+            )
+
+
+        return results

@@ -1,12 +1,4 @@
 class ModuleRegistry:
-    """
-    Central registry for Project Forge modules.
-
-    Responsible for:
-    - Registering modules
-    - Listing available modules
-    - Finding modules by ID
-    """
 
 
     def __init__(self):
@@ -15,7 +7,10 @@ class ModuleRegistry:
 
 
 
-    def register(self, module):
+    def register(
+        self,
+        module
+    ):
 
 
         info = module.get_info()
@@ -24,11 +19,14 @@ class ModuleRegistry:
         module_id = info["id"]
 
 
-        self.modules[module_id] = info
+        self.modules[module_id] = module
 
 
 
-    def unregister(self, module_id):
+    def unregister(
+        self,
+        module_id
+    ):
 
 
         if module_id in self.modules:
@@ -37,7 +35,11 @@ class ModuleRegistry:
 
 
 
-    def get_module(self, module_id):
+    def get_module(
+        self,
+        module_id
+    ):
+
 
         return self.modules.get(
             module_id
@@ -47,12 +49,21 @@ class ModuleRegistry:
 
     def get_all_modules(self):
 
-        return list(
-            self.modules.values()
-        )
+
+        return [
+
+            module.get_info()
+
+            for module in self.modules.values()
+
+        ]
 
 
 
-    def exists(self, module_id):
+    def exists(
+        self,
+        module_id
+    ):
+
 
         return module_id in self.modules
