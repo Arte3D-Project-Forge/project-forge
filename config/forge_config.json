@@ -1,0 +1,61 @@
+{
+    "project_forge": {
+        "version": "0.33",
+        "environment": "development"
+    },
+
+    "providers": {
+
+        "image": {
+
+            "active": "mock",
+
+            "available": [
+
+                "mock",
+
+                "openai",
+
+                "comfyui"
+
+            ]
+
+        },
+
+        "audio": {
+
+            "active": "mock"
+
+        },
+
+        "text": {
+
+            "active": "mock"
+
+        }
+
+    },
+
+
+    "generation": {
+
+        "default_resolution": "48x48",
+
+        "pixel_art": true,
+
+        "style": "HD Pixel Art RPG",
+
+        "transparent_background": true
+
+    },
+
+
+    "paths": {
+
+        "database": "database",
+
+        "generated": "generated"
+
+    }
+
+}

@@ -1,33 +1,40 @@
 import os
 import json
 
+from datetime import datetime
+
+from app.ai.manager.image_provider_manager import ImageProviderManager
+
+
 
 class SpriteWorker:
 
 
     def __init__(
         self,
-        provider_manager
+        image_provider="mock"
     ):
 
-        self.provider = provider_manager
 
+        self.image_manager = ImageProviderManager(
 
+            provider_name=image_provider
 
-    def run(
-        self,
-        job,
-        package_path
-    ):
-
-        asset_name = self.create_asset_name(
-            job.request
         )
 
 
-        sprite_path = os.path.join(
 
-            package_path,
+    def generate(
+        self,
+        project,
+        asset_name,
+        prompt
+    ):
+
+
+        output_path = os.path.join(
+
+            project["path"],
 
             "sprites",
 
@@ -35,90 +42,6 @@ class SpriteWorker:
 
         )
 
-
-        self.create_structure(
-            sprite_path
-        )
-
-
-        metadata = self.create_metadata(
-            job,
-            asset_name
-        )
-
-
-        metadata_file = os.path.join(
-
-            sprite_path,
-
-            "metadata.json"
-
-        )
-
-
-        with open(
-
-            metadata_file,
-
-            "w",
-
-            encoding="utf-8"
-
-        ) as file:
-
-            json.dump(
-
-                metadata,
-
-                file,
-
-                indent=4,
-
-                ensure_ascii=False
-
-            )
-
-
-
-        prompt = self.build_prompt(
-            job,
-            asset_name
-        )
-
-
-        prompt_file = os.path.join(
-
-            sprite_path,
-
-            "sprite_prompt.txt"
-
-        )
-
-
-        with open(
-
-            prompt_file,
-
-            "w",
-
-            encoding="utf-8"
-
-        ) as file:
-
-            file.write(
-                prompt
-            )
-
-
-
-        return sprite_path
-
-
-
-    def create_structure(
-        self,
-        path
-    ):
 
         animations = [
 
@@ -135,110 +58,151 @@ class SpriteWorker:
         ]
 
 
+
+        os.makedirs(
+
+            output_path,
+
+            exist_ok=True
+
+        )
+
+
+
+        generated_files = []
+
+
+
         for animation in animations:
+
+
+            animation_path = os.path.join(
+
+                output_path,
+
+                animation
+
+            )
+
 
             os.makedirs(
 
-                os.path.join(
-
-                    path,
-
-                    animation
-
-                ),
+                animation_path,
 
                 exist_ok=True
 
             )
 
 
+            filename = (
 
-    def create_asset_name(
-        self,
-        request
-    ):
+                asset_name
 
-        words = request.lower().split()
+                +
 
-        name = "_".join(
-            words[:3]
-        )
+                "_"
 
-        return name
+                +
+
+                animation
+
+                +
+
+                "_001"
+
+            )
 
 
 
-    def create_metadata(
-        self,
-        job,
-        asset_name
-    ):
+            result = self.image_manager.generate(
 
-        return {
+                prompt=(
 
-            "asset": asset_name,
+                    prompt
 
-            "type": "character_sprite",
+                    +
 
-            "style": "HD Pixel Art",
+                    f" animation {animation}"
 
-            "resolution": "48x48",
+                ),
 
-            "engine": job.project["engine"],
+                filename=filename
 
-            "animations": [
+            )
 
-                "idle",
 
-                "walk",
+            generated_files.append(
 
-                "attack",
+                result
 
-                "hurt",
+            )
 
-                "death"
 
-            ],
 
-            "status": "prepared"
+        metadata = {
+
+
+            "asset":
+
+                asset_name,
+
+
+            "type":
+
+                "sprite",
+
+
+            "animations":
+
+                animations,
+
+
+            "generated_files":
+
+                generated_files,
+
+
+            "created_at":
+
+                datetime.now().isoformat()
 
         }
 
 
 
-    def build_prompt(
-        self,
-        job,
-        asset_name
-    ):
+        metadata_path = os.path.join(
 
-        return f"""
-Create a professional RPG pixel art sprite.
+            output_path,
 
-Asset:
-{asset_name}
+            "sprite_generation.json"
 
-Description:
-{job.request}
+        )
 
-Style:
-HD Pixel Art
 
-Resolution:
-48x48 pixels
 
-Requirements:
+        with open(
 
-- Transparent background
-- Game ready sprite
-- RPG fantasy style
-- Consistent animation frames
-- Idle animation
-- Walk animation
-- Attack animation
-- Hurt animation
-- Death animation
+            metadata_path,
 
-Engine:
-{job.project["engine"]}
-""".strip()
+            "w",
+
+            encoding="utf-8"
+
+        ) as file:
+
+
+            json.dump(
+
+                metadata,
+
+                file,
+
+                indent=4,
+
+                ensure_ascii=False
+
+            )
+
+
+
+        return output_path
