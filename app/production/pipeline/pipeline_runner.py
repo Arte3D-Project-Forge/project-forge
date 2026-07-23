@@ -10,6 +10,7 @@ from app.ai.workers.sprite_worker import SpriteWorker
 from app.ai.workers.tile_worker import TileWorker
 from app.ai.workers.animation_worker import AnimationWorker
 from app.ai.workers.audio_worker import AudioWorker
+from app.ai.workers.godot_worker import GodotWorker
 
 
 
@@ -68,6 +69,11 @@ class PipelineRunner:
 
 
         self.audio_worker = AudioWorker(
+            self.provider
+        )
+
+
+        self.godot_worker = GodotWorker(
             self.provider
         )
 
@@ -227,6 +233,26 @@ class PipelineRunner:
 
         print(
             audio_folder
+        )
+
+
+
+        godot_folder = self.godot_worker.run(
+
+            self.job,
+
+            package_path
+
+        )
+
+
+        print(
+            "[OK] Godot package generated"
+        )
+
+
+        print(
+            godot_folder
         )
 
 
