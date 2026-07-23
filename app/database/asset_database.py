@@ -4,6 +4,7 @@ import json
 from datetime import datetime
 
 from app.utils.encoding import UTF8Normalizer
+from app.database.versioning.version_manager import VersionManager
 
 
 
@@ -51,6 +52,13 @@ class AssetDatabase:
             self.database_path,
 
             "versions.json"
+
+        )
+
+
+        self.version_manager = VersionManager(
+
+            database_path
 
         )
 
@@ -175,18 +183,26 @@ class AssetDatabase:
         )
 
 
-        clean_display_name = UTF8Normalizer.fix(
+        display_name = UTF8Normalizer.fix(
 
             asset_name
 
         )
 
 
-        clean_name = UTF8Normalizer.slug(
+        internal_name = UTF8Normalizer.slug(
 
-            clean_display_name
+            display_name
 
         )
+
+
+        asset_id = len(assets) + 1
+
+
+
+        created = datetime.now().isoformat()
+
 
 
         asset = {
@@ -194,17 +210,17 @@ class AssetDatabase:
 
             "id":
 
-                len(assets) + 1,
+                asset_id,
 
 
             "name":
 
-                clean_name,
+                internal_name,
 
 
             "display_name":
 
-                clean_display_name,
+                display_name,
 
 
             "type":
@@ -229,7 +245,7 @@ class AssetDatabase:
 
             "created_at":
 
-                datetime.now().isoformat()
+                created
 
         }
 
@@ -258,9 +274,21 @@ class AssetDatabase:
         )
 
 
-        self.create_version(
+        self.version_manager.create_version(
 
-            asset
+            asset_id,
+
+            "1.0",
+
+            [
+
+                "initial asset creation",
+
+                "production package generated",
+
+                "quality approval completed"
+
+            ]
 
         )
 
@@ -304,7 +332,12 @@ class AssetDatabase:
 
                 "type":
 
-                    asset["type"]
+                    asset["type"],
+
+
+                "status":
+
+                    asset["status"]
 
 
             }
@@ -317,54 +350,6 @@ class AssetDatabase:
             self.registry_file,
 
             registry
-
-        )
-
-
-
-    def create_version(
-        self,
-        asset
-    ):
-
-
-        versions = self.load(
-
-            self.versions_file
-
-        )
-
-
-        versions.append(
-
-            {
-
-
-                "asset_id":
-
-                    asset["id"],
-
-
-                "version":
-
-                    asset["version"],
-
-
-                "date":
-
-                    asset["created_at"]
-
-
-            }
-
-        )
-
-
-        self.save(
-
-            self.versions_file,
-
-            versions
 
         )
 

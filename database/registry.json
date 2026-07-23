@@ -25,5 +25,12 @@
         "name": "criar_um_dragao",
         "display_name": "criar_um_dragão",
         "type": "character"
+    },
+    {
+        "asset_id": 6,
+        "name": "criar_um_dragao",
+        "display_name": "criar_um_dragão",
+        "type": "character",
+        "status": "approved"
     }
 ]
