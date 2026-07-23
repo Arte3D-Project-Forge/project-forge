@@ -8,6 +8,7 @@ from app.ai.provider_manager import ProviderManager
 from app.ai.workers.lore_worker import LoreWorker
 from app.ai.workers.sprite_worker import SpriteWorker
 from app.ai.workers.tile_worker import TileWorker
+from app.ai.workers.animation_worker import AnimationWorker
 
 
 
@@ -60,6 +61,11 @@ class PipelineRunner:
         )
 
 
+        self.animation_worker = AnimationWorker(
+            self.provider
+        )
+
+
 
     def run(self):
 
@@ -74,6 +80,7 @@ class PipelineRunner:
 
 
         print()
+
 
 
         package_path = self.package.build()
@@ -131,7 +138,6 @@ class PipelineRunner:
             "[OK] Lore generated"
         )
 
-
         print(
             lore_file
         )
@@ -150,7 +156,6 @@ class PipelineRunner:
         print(
             "[OK] Sprite package generated"
         )
-
 
         print(
             sprite_folder
@@ -171,9 +176,27 @@ class PipelineRunner:
             "[OK] Tile package generated"
         )
 
-
         print(
             tile_folder
+        )
+
+
+
+        animation_folder = self.animation_worker.run(
+
+            self.job,
+
+            package_path
+
+        )
+
+
+        print(
+            "[OK] Animation package generated"
+        )
+
+        print(
+            animation_folder
         )
 
 
