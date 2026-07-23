@@ -11,24 +11,26 @@ class SpriteWorker:
 
 
     def __init__(
-        self,
-        image_provider="mock"
+
+        self
+
     ):
 
 
-        self.image_manager = ImageProviderManager(
-
-            provider_name=image_provider
-
-        )
+        self.image_manager = ImageProviderManager()
 
 
 
     def generate(
+
         self,
+
         project,
+
         asset_name,
+
         prompt
+
     ):
 
 
@@ -58,7 +60,6 @@ class SpriteWorker:
         ]
 
 
-
         os.makedirs(
 
             output_path,
@@ -66,7 +67,6 @@ class SpriteWorker:
             exist_ok=True
 
         )
-
 
 
         generated_files = []
@@ -113,7 +113,6 @@ class SpriteWorker:
             )
 
 
-
             result = self.image_manager.generate(
 
                 prompt=(
@@ -122,7 +121,15 @@ class SpriteWorker:
 
                     +
 
-                    f" animation {animation}"
+                    " "
+
+                    +
+
+                    animation
+
+                    +
+
+                    " animation"
 
                 ),
 
@@ -152,12 +159,17 @@ class SpriteWorker:
                 "sprite",
 
 
+            "provider":
+
+                self.image_manager.provider_name,
+
+
             "animations":
 
                 animations,
 
 
-            "generated_files":
+            "files":
 
                 generated_files,
 
@@ -177,7 +189,6 @@ class SpriteWorker:
             "sprite_generation.json"
 
         )
-
 
 
         with open(
@@ -202,7 +213,6 @@ class SpriteWorker:
                 ensure_ascii=False
 
             )
-
 
 
         return output_path

@@ -1,6 +1,7 @@
 {
     "asset": "ember_drake",
     "type": "sprite",
+    "provider": "mock",
     "animations": [
         "idle",
         "walk",
@@ -8,7 +9,7 @@
         "hurt",
         "death"
     ],
-    "generated_files": [
+    "files": [
         {
             "status": "generated",
             "file": "ember_drake_idle_001",
@@ -35,5 +36,5 @@
             "provider": "mock"
         }
     ],
-    "created_at": "2026-07-23T13:15:58.539813"
+    "created_at": "2026-07-23T13:24:00.525236"
 }

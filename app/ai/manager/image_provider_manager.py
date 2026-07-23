@@ -1,5 +1,4 @@
-import os
-
+from app.core.config_manager import ConfigManager
 
 from app.ai.providers.images.mock_image_provider import MockImageProvider
 
@@ -9,12 +8,20 @@ class ImageProviderManager:
 
 
     def __init__(
-        self,
-        provider_name="mock"
+
+        self
+
     ):
 
 
-        self.provider_name = provider_name
+        self.config = ConfigManager()
+
+
+        self.provider_name = (
+
+            self.config.get_image_provider()
+
+        )
 
 
         self.provider = self.load_provider()
@@ -22,7 +29,9 @@ class ImageProviderManager:
 
 
     def load_provider(
+
         self
+
     ):
 
 
@@ -35,16 +44,20 @@ class ImageProviderManager:
 
         raise Exception(
 
-            f"Image provider not found: {self.provider_name}"
+            f"Unsupported image provider: {self.provider_name}"
 
         )
 
 
 
     def generate(
+
         self,
+
         prompt,
+
         filename
+
     ):
 
 
