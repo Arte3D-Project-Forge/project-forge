@@ -1,40 +1,107 @@
+import json
+import os
+
+from datetime import datetime
+
 from app.ai.providers.images.image_provider import ImageProvider
 
 
 
-class MockImageProvider(
-    ImageProvider
-):
+class MockImageProvider(ImageProvider):
 
 
     def generate(
+
         self,
+
         prompt,
+
         filename
+
     ):
 
 
-        self.save_metadata(
+        output_path = os.path.join(
 
-            filename,
+            "generated",
 
-            prompt,
-
-            "mock"
+            "images"
 
         )
 
 
-        return {
+        os.makedirs(
 
-            "status": "generated",
+            output_path,
 
-            "file":
+            exist_ok=True
 
-                filename,
+        )
+
+
+        file_path = os.path.join(
+
+            output_path,
+
+            filename + ".json"
+
+        )
+
+
+        data = {
+
+
+            "status":
+
+                "generated",
+
 
             "provider":
 
-                "mock"
+                "mock",
+
+
+            "filename":
+
+                filename,
+
+
+            "prompt":
+
+                prompt,
+
+
+            "created_at":
+
+                datetime.now().isoformat()
 
         }
+
+
+
+        with open(
+
+            file_path,
+
+            "w",
+
+            encoding="utf-8"
+
+        ) as file:
+
+
+            json.dump(
+
+                data,
+
+                file,
+
+                indent=4,
+
+                ensure_ascii=False
+
+            )
+
+
+
+        return data

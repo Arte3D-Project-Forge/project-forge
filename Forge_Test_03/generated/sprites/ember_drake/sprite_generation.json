@@ -12,29 +12,39 @@
     "files": [
         {
             "status": "generated",
-            "file": "ember_drake_idle_001",
-            "provider": "mock"
+            "provider": "mock",
+            "filename": "ember_drake_idle_001",
+            "prompt": "Ancient fire dragon HD pixel art RPG character 48x48 idle animation",
+            "created_at": "2026-07-23T13:27:10.941979"
         },
         {
             "status": "generated",
-            "file": "ember_drake_walk_001",
-            "provider": "mock"
+            "provider": "mock",
+            "filename": "ember_drake_walk_001",
+            "prompt": "Ancient fire dragon HD pixel art RPG character 48x48 walk animation",
+            "created_at": "2026-07-23T13:27:10.943219"
         },
         {
             "status": "generated",
-            "file": "ember_drake_attack_001",
-            "provider": "mock"
+            "provider": "mock",
+            "filename": "ember_drake_attack_001",
+            "prompt": "Ancient fire dragon HD pixel art RPG character 48x48 attack animation",
+            "created_at": "2026-07-23T13:27:10.944453"
         },
         {
             "status": "generated",
-            "file": "ember_drake_hurt_001",
-            "provider": "mock"
+            "provider": "mock",
+            "filename": "ember_drake_hurt_001",
+            "prompt": "Ancient fire dragon HD pixel art RPG character 48x48 hurt animation",
+            "created_at": "2026-07-23T13:27:10.945674"
         },
         {
             "status": "generated",
-            "file": "ember_drake_death_001",
-            "provider": "mock"
+            "provider": "mock",
+            "filename": "ember_drake_death_001",
+            "prompt": "Ancient fire dragon HD pixel art RPG character 48x48 death animation",
+            "created_at": "2026-07-23T13:27:10.946903"
         }
     ],
-    "created_at": "2026-07-23T13:24:00.525236"
+    "created_at": "2026-07-23T13:27:10.947430"
 }
