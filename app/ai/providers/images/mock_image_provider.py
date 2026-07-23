@@ -16,18 +16,11 @@ class MockImageProvider(ImageProvider):
 
         prompt,
 
-        filename
+        filename,
+
+        output_path
 
     ):
-
-
-        output_path = os.path.join(
-
-            "generated",
-
-            "images"
-
-        )
 
 
         os.makedirs(
@@ -101,7 +94,6 @@ class MockImageProvider(ImageProvider):
                 ensure_ascii=False
 
             )
-
 
 
         return data

@@ -6,10 +6,8 @@ class ImageProvider(ABC):
 
 
     """
-    Base interface for all Project Forge image providers.
-    Every image provider must implement generate().
+    Base interface for Project Forge image providers.
     """
-
 
 
     @abstractmethod
@@ -19,23 +17,31 @@ class ImageProvider(ABC):
 
         prompt,
 
-        filename
+        filename,
+
+        output_path
 
     ):
 
 
         """
-        Generate an image asset.
+        Generate image asset.
 
         Args:
+
             prompt:
-                Description used by the image model.
+                Image generation prompt.
 
             filename:
-                Target asset name.
+                Asset filename.
+
+            output_path:
+                Final asset directory.
 
         Returns:
-            Provider generation result.
+
+            Generation result dictionary.
+
         """
 
 

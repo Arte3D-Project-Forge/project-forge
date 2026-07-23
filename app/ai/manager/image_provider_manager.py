@@ -67,7 +67,9 @@ class ImageProviderManager:
 
         prompt,
 
-        filename
+        filename,
+
+        output_path
 
     ):
 
@@ -76,6 +78,8 @@ class ImageProviderManager:
 
             prompt,
 
-            filename
+            filename,
+
+            output_path
 
         )

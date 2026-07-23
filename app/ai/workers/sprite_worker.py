@@ -133,7 +133,9 @@ class SpriteWorker:
 
                 ),
 
-                filename=filename
+                filename=filename,
+
+                output_path=animation_path
 
             )
 
