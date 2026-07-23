@@ -4,7 +4,9 @@ from app.production.pipeline.prompt_builder import PromptBuilder
 from app.production.pipeline.readme_builder import ReadmeBuilder
 
 from app.ai.provider_manager import ProviderManager
+
 from app.ai.workers.lore_worker import LoreWorker
+from app.ai.workers.sprite_worker import SpriteWorker
 
 
 
@@ -47,6 +49,11 @@ class PipelineRunner:
         )
 
 
+        self.sprite_worker = SpriteWorker(
+            self.provider
+        )
+
+
 
     def run(self):
 
@@ -58,8 +65,8 @@ class PipelineRunner:
             "Starting Production Pipeline..."
         )
 
-
         print()
+
 
 
         package_path = self.package.build()
@@ -68,6 +75,7 @@ class PipelineRunner:
         print(
             "[OK] Package created"
         )
+
 
 
         self.manifest.build(
@@ -120,6 +128,27 @@ class PipelineRunner:
         print(
             lore_file
         )
+
+
+
+        sprite_folder = self.sprite_worker.run(
+
+            self.job,
+
+            package_path
+
+        )
+
+
+        print(
+            "[OK] Sprite package generated"
+        )
+
+
+        print(
+            sprite_folder
+        )
+
 
 
         print()
