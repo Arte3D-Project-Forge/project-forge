@@ -1,4 +1,5 @@
 from app.modules.documents.module import DocumentsModule
+from app.modules.production.module import ProductionModule
 
 
 
@@ -16,19 +17,18 @@ class ModuleLoader:
 
         modules = [
 
-            DocumentsModule()
+            DocumentsModule(),
+
+            ProductionModule()
 
         ]
 
 
-
         for module in modules:
-
 
             self.registry.register(
                 module
             )
-
 
 
         return modules
