@@ -3,6 +3,8 @@ import json
 
 from datetime import datetime
 
+from app.utils.encoding import UTF8Normalizer
+
 
 
 class AssetDatabase:
@@ -157,104 +159,6 @@ class AssetDatabase:
 
 
 
-    def generate_asset_name(
-        self,
-        text
-    ):
-
-
-        replacements = {
-
-            "á":"a",
-            "à":"a",
-            "ã":"a",
-            "â":"a",
-            "ä":"a",
-
-            "é":"e",
-            "è":"e",
-            "ê":"e",
-            "ë":"e",
-
-            "í":"i",
-            "ì":"i",
-            "î":"i",
-
-            "ó":"o",
-            "ò":"o",
-            "õ":"o",
-            "ô":"o",
-
-            "ú":"u",
-            "ù":"u",
-            "û":"u",
-
-            "ç":"c"
-
-        }
-
-
-        result = text.lower()
-
-
-        for old,new in replacements.items():
-
-            result = result.replace(
-
-                old,
-
-                new
-
-            )
-
-
-        result = (
-
-            result
-
-            .replace(
-
-                " ",
-
-                "_"
-
-            )
-
-            .replace(
-
-                "-",
-
-                "_"
-
-            )
-
-        )
-
-
-        allowed = (
-
-            "abcdefghijklmnopqrstuvwxyz"
-
-            "0123456789_"
-
-        )
-
-
-        result = "".join(
-
-            char
-
-            for char in result
-
-            if char in allowed
-
-        )
-
-
-        return result
-
-
-
     def register_asset(
         self,
         asset_name,
@@ -271,9 +175,16 @@ class AssetDatabase:
         )
 
 
-        clean_name = self.generate_asset_name(
+        clean_display_name = UTF8Normalizer.fix(
 
             asset_name
+
+        )
+
+
+        clean_name = UTF8Normalizer.slug(
+
+            clean_display_name
 
         )
 
@@ -293,7 +204,7 @@ class AssetDatabase:
 
             "display_name":
 
-                asset_name,
+                clean_display_name,
 
 
             "type":
@@ -384,6 +295,11 @@ class AssetDatabase:
                 "name":
 
                     asset["name"],
+
+
+                "display_name":
+
+                    asset["display_name"],
 
 
                 "type":

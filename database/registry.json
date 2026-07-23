@@ -13,5 +13,17 @@
         "asset_id": 3,
         "name": "criar_um_dragao",
         "type": "character"
+    },
+    {
+        "asset_id": 4,
+        "name": "criar_um_dragao",
+        "display_name": "criar_um_dragão",
+        "type": "character"
+    },
+    {
+        "asset_id": 5,
+        "name": "criar_um_dragao",
+        "display_name": "criar_um_dragão",
+        "type": "character"
     }
 ]
