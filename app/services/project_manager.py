@@ -6,18 +6,7 @@ class ProjectManager:
 
     def __init__(self):
 
-        base_dir = os.path.dirname(
-            os.path.dirname(
-                os.path.dirname(__file__)
-            )
-        )
-
-        self.file = os.path.join(
-            base_dir,
-            "app",
-            "data",
-            "projects.json"
-        )
+        self.file = "app/data/projects.json"
 
 
     def load_projects(self):

@@ -7,16 +7,12 @@ from app.services.project_creator import ProjectCreator
 class ProjectWizard(ctk.CTkToplevel):
 
     def __init__(self, parent):
-
         super().__init__(parent)
-
-        self.transient(parent)
-        self.grab_set()
-        self.focus_force()
-        self.lift()
 
         self.title("Novo Projeto")
         self.geometry("500x400")
+
+        self.parent = parent
 
         self.create_ui()
 
@@ -69,7 +65,6 @@ class ProjectWizard(ctk.CTkToplevel):
     def create_project(self):
 
         name = self.name_entry.get()
-
         engine = self.engine_box.get()
 
 

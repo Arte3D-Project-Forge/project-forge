@@ -90,10 +90,7 @@ class ProjectDashboard(ctk.CTkToplevel):
 
     def open_project(self, project):
 
-        print(
-            "ABRINDO WORKSPACE:",
-            project["name"]
-        )
+        print("Abrindo projeto:", project["name"])
 
 
         workspace = ProjectWorkspace(
