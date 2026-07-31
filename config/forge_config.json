@@ -27,6 +27,7 @@
     },
     "comfyui": {
         "server_url": "http://127.0.0.1:8188",
+        "sync_url": "",
         "colab_url": "https://colab.research.google.com/github/Arte3D-Project-Forge/project-forge/blob/main/colab/ComfyUI_Forge_Notebook.ipynb",
         "default_model": "dreamshaper_8.safetensors",
         "steps": 28,

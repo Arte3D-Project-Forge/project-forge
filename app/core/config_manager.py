@@ -1,7 +1,9 @@
 import json
 import os
 import sys
+import threading
 
+_CONFIG_LOCK = threading.Lock()
 
 
 class ConfigManager:
@@ -146,19 +148,20 @@ class ConfigManager:
         value
     ):
 
-        if section not in self.config:
-            self.config[section] = {}
+        with _CONFIG_LOCK:
+            if section not in self.config:
+                self.config[section] = {}
 
-        self.config[section][key] = value
+            self.config[section][key] = value
 
-        with open(
-            self.config_path,
-            "w",
-            encoding="utf-8"
-        ) as file:
-            json.dump(
-                self.config,
-                file,
-                indent=4,
-                ensure_ascii=False
-            )
+            with open(
+                self.config_path,
+                "w",
+                encoding="utf-8"
+            ) as file:
+                json.dump(
+                    self.config,
+                    file,
+                    indent=4,
+                    ensure_ascii=False
+                )

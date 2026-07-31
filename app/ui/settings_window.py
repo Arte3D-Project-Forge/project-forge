@@ -123,6 +123,61 @@ class SettingsWindow(ctk.CTkToplevel):
         )
         colab.pack(pady=(0, 14), padx=15)
 
+        # ---- Sincronização automática ----
+        sync_frame = ctk.CTkFrame(self)
+        sync_frame.pack(pady=8, padx=30, fill="x")
+
+        ctk.CTkLabel(
+            sync_frame,
+            text="Sincronização automática do túnel",
+            font=("Arial", 15, "bold")
+        ).pack(pady=(12, 2), padx=15, anchor="w")
+
+        self.sync_var = ctk.StringVar(
+            value=self.config.config.get(
+                "comfyui", {}
+            ).get("sync_url", "")
+        )
+
+        sync_row = ctk.CTkFrame(
+            sync_frame,
+            fg_color="transparent"
+        )
+        sync_row.pack(padx=15, pady=4, fill="x")
+
+        self.sync_entry = ctk.CTkEntry(
+            sync_row,
+            textvariable=self.sync_var,
+            state="readonly"
+        )
+        self.sync_entry.pack(
+            side="left",
+            fill="x",
+            expand=True,
+            padx=5
+        )
+
+        btn_sync = ctk.CTkButton(
+            sync_row,
+            text="Criar link",
+            width=90,
+            command=self.create_sync_link
+        )
+        btn_sync.pack(side="left", padx=5)
+
+        self.sync_status = ctk.CTkLabel(
+            sync_frame,
+            text=(
+                "Cole este link na célula 'Túnel automático' do Colab. "
+                "Depois disso, o Forge descobre a URL sozinho."
+            ),
+            font=("Arial", 11),
+            text_color="gray",
+            wraplength=470,
+            justify="left"
+        )
+        self.sync_status.pack(pady=(0, 10), padx=15, anchor="w")
+
         # ---- Sobre ----
         about = ctk.CTkLabel(
             self,
@@ -245,3 +300,58 @@ class SettingsWindow(ctk.CTkToplevel):
             ),
             text_color="white"
         )
+
+    def create_sync_link(self):
+
+        from app.services.comfyui_sync import ComfyUISync
+
+        def do_create():
+            try:
+                link = ComfyUISync.create_link()
+            except Exception as exc:
+                self.after(
+                    0,
+                    lambda: self.sync_status.configure(
+                        text=f"Erro ao criar link: {exc}",
+                        text_color="red"
+                    )
+                )
+                return
+
+            def update():
+                self.config.set(
+                    "comfyui",
+                    "sync_url",
+                    link
+                )
+                self.sync_var.set(link)
+                self.sync_entry.configure(
+                    state="normal"
+                )
+                self.sync_entry.select_range(
+                    0, "end"
+                )
+                self.clipboard_clear()
+                self.clipboard_append(link)
+                self.sync_entry.configure(
+                    state="readonly"
+                )
+                self.sync_status.configure(
+                    text=(
+                        "Link copiado! Cole na célula 'Túnel automático' "
+                        "do Colab e rode. O Forge descobrirá a URL sozinho."
+                    ),
+                    text_color="green"
+                )
+
+            self.after(0, update)
+
+        self.sync_status.configure(
+            text="Criando link de sincronização...",
+            text_color="orange"
+        )
+
+        threading.Thread(
+            target=do_create,
+            daemon=True
+        ).start()

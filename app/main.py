@@ -66,6 +66,21 @@ class ForgeApp(ctk.CTk):
 
         self.create_ui()
 
+        self._start_sync_poller()
+
+    def _start_sync_poller(self):
+        from app.services.comfyui_sync import (
+            ComfyUISyncPoller
+        )
+
+        try:
+            self.sync_poller = ComfyUISyncPoller(
+                self.config
+            )
+            self.sync_poller.start()
+        except Exception:
+            self.sync_poller = None
+
     # ==========================
     # UI
     # ==========================
