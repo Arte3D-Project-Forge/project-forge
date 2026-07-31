@@ -20,7 +20,22 @@ opencode
 ```
 C:\Users\Fábio\Projects\project-forge\dist\ProjectForge.exe
 ```
-(125MB, build 31/07 com: menu de criação, workflow ComfyUI de qualidade, fundo transparente via rembg, config persistente em %APPDATA%\ProjectForge)
+(125MB, build 31/07 com: menu de criação, workflow ComfyUI de qualidade + upscale RealESRGAN 4x, fundo transparente para TODOS os geradores, sincronização automática do túnel)
+
+**Arquitetura final de geração (31/07):**
+1. **Qualidade máxima (padrão):** Colab + ComfyUI. O notebook tem célula de "túnel automático" que mantém o túnel vivo e publica a URL em um link jsonblob.com PRE-CONFIGURADO (hardcoded no app e no notebook — zero cola-cola). O Forge vigia o link a cada 8s e se conecta sozinho.
+2. **Fallback offline:** Pollinations (imagegen3) quando o Colab não está rodando — o app nunca trava sem internet.
+
+**Link de sincronização compartilhado:** `https://jsonblob.com/api/jsonBlob/019fb890-6c80-7896-88e3-14ac5bf3ca7c`
+- Notebook celula 8 tem `SYNC_URL` com este link
+- App config `comfyui.sync_url` tem o mesmo link
+- ATENÇÃO: para distribuição em produção, cada usuário deve criar o SEU link (botão "Criar link" nas Configurações) — link compartilhado pode colidir entre usuários.
+
+**Bugs importantes corrigidos nesta sessão:**
+- Workflow do ComfyUI tinha chave `description` no topo → ComfyUI retornava 500. Corrigido com `workflow.pop("description")`.
+- URL do túnel não era salva sem clicar em Testar → agora salva automaticamente ao digitar/colar.
+- Manager caía no mock (quadrado colorido) silenciosamente → mock removido do fallback automático; erros honestos mostrados.
+- Fundo transparente (rembg) só rodava no caminho ComfyUI → agora roda no worker para todos os geradores.
 
 **O app foi reformulado como um app de menu para o cliente final.**
 
@@ -133,19 +148,23 @@ project-forge/
 ├── app/
 │   ├── main.py                                   # MENU DE CRIAÇÃO (cliente final)
 │   ├── ai/
-│   │   ├── manager/image_provider_manager.py   # AUTO-DETECTA ComfyUI + fallback
+│   │   ├── manager/image_provider_manager.py   # ComfyUI (se vivo) + fallback pollinations
 │   │   ├── providers/images/                   # comfyui, pollinations, huggingface, mock, openai
 │   │   └── workers/                            # sprite, lore, tile, animation, audio, godot
 │   ├── core/config_manager.py                  # config persistente (APPDATA no .exe)
 │   ├── modules/production/ui/production_window.py  # Studio de criação
-│   ├── services/background_remover.py          # fundo transparente (rembg)
+│   ├── services/
+│   │   ├── background_remover.py               # fundo transparente (rembg)
+│   │   └── comfyui_sync.py                     # vigia o link e atualiza URL sozinho
 │   ├── production/                             # job, pipeline, builders
-│   └── ui/                                     # wizard, workspace, sprite viewer
+│   └── ui/                                     # wizard, workspace, sprite viewer, settings
 ├── config/
-│   ├── forge_config.json                       # comfyui (workflow, steps, prompts)
-│   └── workflows/comfyui_sprite_workflow.json  # WORKFLOW DE QUALIDADE
-├── colab/ComfyUI_Forge_Notebook.ipynb          # PUBLICADO no GitHub
-├── dist/ProjectForge.exe                       # executável (regenerar!)
+│   ├── forge_config.json                       # comfyui (workflow, steps, prompts, sync_url)
+│   └── workflows/
+│       ├── comfyui_sprite_workflow.json        # workflow básico
+│       └── comfyui_sprite_upscale_workflow.json# workflow + upscale RealESRGAN 4x
+├── colab/ComfyUI_Forge_Notebook.ipynb          # PUBLICADO no GitHub (túnel automático)
+├── dist/ProjectForge.exe                       # executável (ATUALIZADO 31/07)
 └── COMO_CONTINUAR.md                           # este arquivo
 ```
 
@@ -153,9 +172,11 @@ project-forge/
 
 ## Importante
 
-- O `.exe` em `dist/` precisa ser **regenerado** sempre que o código mudar (comando acima)
-- Para qualidade máxima grátis: usar HuggingFace com token
-- Para qualidade máxima com GPU grátis: usar ComfyUI via Colab (notebook em `colab/`)
+- O `.exe` em `dist/` está **ATUALIZADO** (31/07). Regerar sempre que o código mudar:
+  `.\venv\Scripts\pyinstaller --onefile --name "ProjectForge" --add-data "config;config" --add-data "app;app" --hidden-import "PIL._tkinter_finder" --hidden-import "customtkinter" --hidden-import "openai" --hidden-import "rembg" --hidden-import "onnxruntime" --collect-submodules "rembg" --collect-data "rembg" run.py`
+- **Qualidade máxima grátis:** ComfyUI via Colab (notebook publicado). O túnel se mantém vivo sozinho e o Forge descobre a URL sozinho (link compartilhado pre-configurado).
+- **Fallback offline:** Pollinations imagegen3 (funciona sem nada, qualidade média).
+- Para distribuição real, cada usuário cria seu link de sincronização (Configurações > Criar link).
 - O usuário quer um app simples: abrir → digitar prompt → ver sprites. Foco nisso.
 
 ---
