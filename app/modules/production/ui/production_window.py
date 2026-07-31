@@ -110,7 +110,7 @@ class ProductionWindow(ctk.CTkToplevel):
             state="readonly"
         )
         self.size_box.pack(side="left", padx=5)
-        self.size_box.set("512x512")
+        self.size_box.set("1024x1024")
 
         # Estilo
         row2 = ctk.CTkFrame(config_frame, fg_color="transparent")
