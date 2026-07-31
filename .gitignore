@@ -118,6 +118,9 @@ generated/
 test_output/
 experiments/
 
+# Godot engine cache
+Godot_projects/*/.godot/
+
 # Local user configuration
 *.local.json
 
