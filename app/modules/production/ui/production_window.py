@@ -36,14 +36,56 @@ ANIMATIONS = [
 ]
 
 STYLE_PRESETS = [
-    ("Pixel Art Retro", "pixel art, 8-bit, retro, hard pixels, limited palette"),
-    ("Pixel HD", "pixel art, 16-bit, HD, crisp pixels, vibrant colors"),
-    ("Anime Cel", "anime style, cel shading, clean bold outlines"),
-    ("Cartoon", "cartoon style, smooth, colorful, playful"),
-    ("Dark Fantasy", "dark fantasy, moody, dramatic, gothic"),
-    ("Cyberpunk", "cyberpunk, neon, futuristic, high tech"),
-    ("Chibi", "chibi, cute, adorable, soft colors"),
-    ("Fantasy RPG", "fantasy RPG, medieval, epic, detailed"),
+    (
+        "Pixel Art Retro",
+        "pixel art, 8-bit, retro, hard pixels, limited palette",
+        "8-bit pixel art game sprite, hard pixels, crisp pixel clusters, "
+        "flat colors, dithered shading, sharp edges, clean outlines, "
+        "single subject, centered, full body, best quality",
+    ),
+    (
+        "Pixel HD",
+        "pixel art, 16-bit, HD, crisp pixels, vibrant colors",
+        "16-bit HD pixel art game sprite, crisp pixel clusters, bold "
+        "outlines, rich colors, clean shading, single subject, centered, "
+        "full body, best quality",
+    ),
+    (
+        "Anime Cel",
+        "anime style, cel shading, clean bold outlines",
+        "anime game sprite, cel shading, clean bold outlines, flat color "
+        "pans, expressive, single character, centered, full body, best quality",
+    ),
+    (
+        "Cartoon",
+        "cartoon style, smooth, colorful, playful",
+        "cartoon game sprite, smooth bold shapes, vibrant colors, playful, "
+        "single character, centered, full body, best quality",
+    ),
+    (
+        "Dark Fantasy",
+        "dark fantasy, moody, dramatic, gothic",
+        "dark fantasy game sprite, moody dramatic lighting, gothic details, "
+        "single subject, centered, full body, best quality",
+    ),
+    (
+        "Cyberpunk",
+        "cyberpunk, neon, futuristic, high tech",
+        "cyberpunk game sprite, neon glow, futuristic high tech, single "
+        "subject, centered, full body, best quality",
+    ),
+    (
+        "Chibi",
+        "chibi, cute, adorable, soft colors",
+        "chibi game sprite, cute adorable proportions, soft colors, big "
+        "head, single character, centered, full body, best quality",
+    ),
+    (
+        "Fantasy RPG",
+        "fantasy RPG, medieval, epic, detailed",
+        "fantasy RPG game sprite, medieval, epic detail, clean outlines, "
+        "single subject, centered, full body, best quality",
+    ),
 ]
 
 ANIMATION_PRESETS = [
@@ -206,7 +248,7 @@ class ProductionView(ForgeView):
         style_row = ctk.CTkFrame(config_frame, fg_color="transparent")
         style_row.pack(padx=18, pady=(0, 6), fill="x")
 
-        for label, prompt in STYLE_PRESETS:
+        for label, prompt, suffix in STYLE_PRESETS:
             chip = ctk.CTkButton(
                 style_row,
                 text=label,
@@ -216,7 +258,7 @@ class ProductionView(ForgeView):
                 hover_color=CARD_HOVER,
                 text_color=TEXT,
                 font=font(11, "bold"),
-                command=lambda p=prompt: self.apply_style(p),
+                command=lambda p=prompt, s=suffix: self.apply_style(p, s),
             )
             chip.pack(side="left", padx=(0, 6))
 
@@ -312,9 +354,16 @@ class ProductionView(ForgeView):
         )
         self.detail_label.pack(pady=2)
 
-    def apply_style(self, prompt):
+    def apply_style(self, prompt, suffix=None):
         self.style_entry.delete(0, "end")
         self.style_entry.insert(0, prompt)
+
+        if suffix:
+            self.config.set("comfyui", "positive_suffix", suffix)
+            self.status.configure(
+                text=f"Estilo aplicado: o ComfyUI usará este estilo agora.",
+                text_color="green",
+            )
 
     def open_gallery(self):
         if self.has_app():
