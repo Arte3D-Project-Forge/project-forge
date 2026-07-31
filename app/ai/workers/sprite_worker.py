@@ -72,3 +72,48 @@ class SpriteWorker:
             json.dump(metadata, f, indent=4, ensure_ascii=False)
 
         return output_path
+
+    def _apply_transparency(self, result):
+        if result.get("status") != "generated":
+            return result
+
+        from app.core.config_manager import ConfigManager
+
+        generation = ConfigManager().config.get("generation", {})
+        if not generation.get("transparent_background", True):
+            return result
+
+        files = result.get("files")
+        if files:
+            updated = []
+            for entry in files:
+                if isinstance(entry, str):
+                    entry = {"file": entry, "status": "generated"}
+                if entry.get("file"):
+                    entry["file"] = self._make_transparent(
+                        entry["file"]
+                    )
+                updated.append(entry)
+            result["files"] = updated
+            return result
+
+        file_path = result.get("file")
+        if file_path:
+            result["file"] = self._make_transparent(file_path)
+
+        return result
+
+    def _make_transparent(self, path):
+        try:
+            from PIL import Image
+
+            image = Image.open(path)
+            if image.mode == "RGBA":
+                return path
+        except Exception:
+            return path
+
+        from app.services.background_remover import remove_background
+
+        result = remove_background(path)
+        return result if result else path
