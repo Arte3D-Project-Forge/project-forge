@@ -199,12 +199,13 @@ class ForgeApp(ctk.CTk):
 
     def _start_status_poller(self):
         import threading
+        import time
 
         from app.services.comfyui_sync import ComfyUISync
 
         def poll():
             while True:
-                threading.Event().wait(10)
+                time.sleep(10)
                 url = (
                     self.config.config.get("comfyui", {})
                     .get("server_url", "")
