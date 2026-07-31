@@ -20,7 +20,13 @@ opencode
 ```
 C:\Users\Fábio\Projects\project-forge\dist\ProjectForge.exe
 ```
-(125MB, build 31/07 com: menu de criação, workflow ComfyUI de qualidade + upscale RealESRGAN 4x, fundo transparente para TODOS os geradores, sincronização automática do túnel)
+(125MB, build 31/07 com: menu de criação, workflow profissional, fundo transparente + pixelização automática para TODOS os geradores, sincronização automática do túnel)
+
+**MODELO PROFISSIONAL (31/07):** `Pixel Art Diffusion XL - Sprite Shaper` (SDXL, do Civitai)
+- Download direto SEM token: `https://civitai.com/api/download/models/364043` (6.6GB)
+- Resolução base 1024x1024 (SDXL nativo) → upscale RealESRGAN_x2plus → 2048x2048
+- Pixelização automática no worker garante pixels quadrados nítidos (anti-"pintura a pincel")
+- Fallback offline continua Pollinations imagegen3 (agora com pixelização tb)
 
 **Arquitetura final de geração (31/07):**
 1. **Qualidade máxima (padrão):** Colab + ComfyUI. O notebook tem célula de "túnel automático" que mantém o túnel vivo e publica a URL em um link jsonblob.com PRE-CONFIGURADO (hardcoded no app e no notebook — zero cola-cola). O Forge vigia o link a cada 8s e se conecta sozinho.
