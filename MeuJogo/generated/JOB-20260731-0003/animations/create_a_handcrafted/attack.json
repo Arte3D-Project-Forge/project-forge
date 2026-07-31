@@ -1,8 +1,0 @@
-{
-    "animation": "attack",
-    "frames": 6,
-    "fps": 10,
-    "loop": false,
-    "direction": "horizontal",
-    "status": "prepared"
-}

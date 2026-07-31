@@ -1,8 +1,0 @@
-{
-    "animation": "walk",
-    "frames": 6,
-    "fps": 8,
-    "loop": true,
-    "direction": "horizontal",
-    "status": "prepared"
-}

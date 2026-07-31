@@ -1,9 +1,0 @@
-{
-    "asset": "goblin_vermelho_feroz",
-    "engine": "Godot 4",
-    "type": "character_package",
-    "scene": true,
-    "script": true,
-    "spriteframes": true,
-    "status": "prepared"
-}

@@ -111,6 +111,12 @@ dmypy.json
 # Generated projects created by Project Forge
 Forge_Test/
 Forge_Test_02/
+Forge_Test_03/
+MeuJogo/
+teste/
+generated/
+test_output/
+experiments/
 
 # Local user configuration
 *.local.json
@@ -128,4 +134,6 @@ Thumbs.db
 Desktop.ini
 
 # macOS
-.DS_Storetest_output/
+.DS_Store
+test_output/
+experiments/

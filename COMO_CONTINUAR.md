@@ -1,5 +1,18 @@
 # Project Forge — Como Continuar
 
+> ## ⚠️ IMPORTANTE (atualizado em 31/07/2026)
+>
+> **LEIA `docs/ESTADO_ATUAL.md` PRIMEIRO.** Ele é o documento master e
+> substitui as seções abaixo quando houver conflito:
+>
+> - A URL do modelo NÃO é mais a do Civitai (retorna HTML/token). Use os
+>   **espelhos HuggingFace** (ver ESTADO_ATUAL.md seção 3.2 e notebook célula 4).
+> - Resolução de upscale: o Colab só tem **RealESRGAN x4plus**; o provider
+>   descobre sozinho (`find_upscale_model`) — não fixar x2plus na config.
+> - Bugs conhecidos e próximos passos: seção 7 e 8 do ESTADO_ATUAL.md.
+>
+> Este arquivo continua válido como guia operacional rápido.
+
 ## Onde me encontrar amanhã
 
 1. Abra o **PowerShell**
@@ -11,6 +24,7 @@ opencode
 
 3. Quando a conversa começar, pergunte: **"Continue de onde paramos"**
 4. Se eu não lembrar de algo, é só me mostrar este arquivo
+   (ou `docs/ESTADO_ATUAL.md`)
 
 ---
 
