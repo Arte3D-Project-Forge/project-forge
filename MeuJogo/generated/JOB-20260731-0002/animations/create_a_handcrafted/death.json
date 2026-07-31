@@ -1,0 +1,8 @@
+{
+    "animation": "death",
+    "frames": 8,
+    "fps": 8,
+    "loop": false,
+    "direction": "horizontal",
+    "status": "prepared"
+}

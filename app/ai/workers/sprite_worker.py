@@ -90,18 +90,48 @@ class SpriteWorker:
                 if isinstance(entry, str):
                     entry = {"file": entry, "status": "generated"}
                 if entry.get("file"):
-                    entry["file"] = self._make_transparent(
+                    processed = self._make_transparent(
                         entry["file"]
                     )
+                    entry["file"] = self._pixelate(processed)
                 updated.append(entry)
             result["files"] = updated
             return result
 
         file_path = result.get("file")
         if file_path:
-            result["file"] = self._make_transparent(file_path)
+            processed = self._make_transparent(file_path)
+            result["file"] = self._pixelate(processed)
 
         return result
+
+    def _pixelate(self, path):
+        try:
+            from app.core.config_manager import ConfigManager
+
+            generation = ConfigManager().config.get("generation", {})
+            if not generation.get("pixel_art", True):
+                return path
+
+            from PIL import Image
+
+            image = Image.open(path).convert("RGBA")
+            width, height = image.size
+
+            grid = max(48, min(192, width // 8))
+
+            small = image.resize(
+                (grid, grid),
+                Image.LANCZOS
+            )
+            pixelated = small.resize(
+                (width, height),
+                Image.NEAREST
+            )
+            pixelated.save(path, "PNG")
+            return path
+        except Exception:
+            return path
 
     def _make_transparent(self, path):
         try:

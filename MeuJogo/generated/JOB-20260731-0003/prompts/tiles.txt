@@ -1,0 +1,19 @@
+Crie Tiles compatíveis com:
+
+Create a handcrafted HD-2D pixel art game asset inspired by the visual quality of modern fantasy JRPGs. Rich color palette, clean pixel clusters, crisp pixels, soft ambient lighting, strong silhouette, pixel-perfect, transparent background, consistent proportions, game-ready asset for Godot EngineCreate a handcrafted HD-2D pixel art game asset inspired by the visual quality of modern fantasy JRPGs. Rich color palette, clean pixel clusters, crisp pixels, soft ambient lighting, strong silhouette, pixel-perfect, transparent background, consistent proportions, game-ready asset for Godot Engine, character asset, pixel art, 16bit, HD RPG style, high quality 64x64, game sprite
+
+Produzir:
+
+Floor
+
+Grass
+
+Stone
+
+Decoration
+
+Collision
+
+Autotile
+
+Godot Ready.

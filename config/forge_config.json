@@ -37,8 +37,8 @@
         "workflow": "config/workflows/comfyui_sprite_workflow.json",
         "upscale_workflow": "config/workflows/comfyui_sprite_upscale_workflow.json",
         "upscale_model": "RealESRGAN_x4plus.pth",
-        "positive_suffix": "high quality, masterpiece, sharp details, clean lines, single subject, centered, full body, best quality",
-        "negative_prompt": "blurry, low quality, deformed, distorted, ugly, bad anatomy, watermark, text, logo, signature, realistic photo, 3d render, multiple subjects, cropped, out of frame, extra limbs, jpeg artifacts, noise, duplicate, monochrome"
+        "positive_suffix": "8-bit pixel art game sprite, hard pixels, crisp pixel clusters, flat colors, dithered shading, sharp edges, clean outlines, single subject, centered, full body, best quality",
+        "negative_prompt": "blurry, low quality, deformed, distorted, ugly, bad anatomy, watermark, text, logo, signature, realistic photo, 3d render, multiple subjects, cropped, out of frame, extra limbs, jpeg artifacts, noise, duplicate, monochrome, painterly, painting, brush strokes, smooth, gradient, soft edges, anti-aliasing, illustration, watercolor, oil painting, digital painting, airbrush"
     },
     "generation": {
         "default_resolution": "512x512",
@@ -46,7 +46,7 @@
         "pixel_art": true,
         "style": "HD Pixel Art RPG",
         "transparent_background": true,
-        "style_suffix": "pixel art, game asset, 16bit, rpg style, high quality, detailed, sharp pixels"
+        "style_suffix": "8-bit pixel art, hard pixels, crisp pixel clusters, flat colors, dithered shading, sharp edges, no gradients, sprite sheet style, game asset, high quality"
     },
     "assets": {
         "categories": [

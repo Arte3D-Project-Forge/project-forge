@@ -1,0 +1,9 @@
+{
+    "asset": "create_a_playable",
+    "engine": "Godot 4",
+    "type": "character_package",
+    "scene": true,
+    "script": true,
+    "spriteframes": true,
+    "status": "prepared"
+}

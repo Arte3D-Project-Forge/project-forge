@@ -1,0 +1,27 @@
+Create a professional RPG environment tile set.
+
+Biome:
+create_a
+
+Description:
+Create a handcrafted HD-2D pixel art game asset inspired by the visual quality of modern fantasy JRPGs. Rich color palette, clean pixel clusters, crisp pixels, soft ambient lighting, strong silhouette, pixel-perfect, transparent background, consistent proportions, game-ready asset for Godot EngineCreate a handcrafted HD-2D pixel art game asset inspired by the visual quality of modern fantasy JRPGs. Rich color palette, clean pixel clusters, crisp pixels, soft ambient lighting, strong silhouette, pixel-perfect, transparent background, consistent proportions, game-ready asset for Godot Engine, character asset, pixel art, 16bit, HD RPG style, high quality, game sprite
+
+Style:
+HD Pixel Art
+
+Tile Size:
+32x32 pixels
+
+Requirements:
+
+- Seamless tiles
+- RPG fantasy environment
+- Godot compatible
+- Terrain variations
+- Vegetation assets
+- Water tiles
+- Environmental props
+- Consistent art direction
+
+Engine:
+Godot

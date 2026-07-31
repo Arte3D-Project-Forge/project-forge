@@ -1,0 +1,19 @@
+Preparar assets para Godot.
+
+Projeto:
+
+Meu Jogo
+
+Organizar:
+
+Sprites
+
+Animations
+
+Textures
+
+Import Settings
+
+Nomenclatura consistente.
+
+Pronto para uso imediato.
