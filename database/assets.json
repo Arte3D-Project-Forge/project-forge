@@ -296,5 +296,25 @@
         "version": "1.0",
         "status": "approved",
         "created_at": "2026-07-31T12:50:45.132330"
+    },
+    {
+        "id": 31,
+        "name": "goblin_vermelho_feroz_pixel_art_sprite_de_inimigo_jogo_rpg",
+        "display_name": "goblin vermelho feroz pixel art, sprite de inimigo, jogo RPG",
+        "type": "character",
+        "path": "MeuJogo\\generated\\JOB-20260731-0001",
+        "version": "1.0",
+        "status": "approved",
+        "created_at": "2026-07-31T14:27:26.278242"
+    },
+    {
+        "id": 32,
+        "name": "goblin_vermelho_feroz_pixel_art_sprite_de_inimigo_jogo_rpg",
+        "display_name": "goblin vermelho feroz pixel art, sprite de inimigo, jogo RPG",
+        "type": "character",
+        "path": "MeuJogo\\generated\\JOB-20260731-0001",
+        "version": "1.0",
+        "status": "approved",
+        "created_at": "2026-07-31T14:31:06.302677"
     }
 ]

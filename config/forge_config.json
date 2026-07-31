@@ -23,10 +23,11 @@
         "huggingface": {
             "api_token": "",
             "model": "black-forest-labs/FLUX.1-schnell"
-        }
+        },
+        "active": "comfyui"
     },
     "comfyui": {
-        "server_url": "http://127.0.0.1:8188",
+        "server_url": "https://visits-liberal-organisation-knee.trycloudflare.com",
         "sync_url": "https://jsonblob.com/api/jsonBlob/019fb890-6c80-7896-88e3-14ac5bf3ca7c",
         "colab_url": "https://colab.research.google.com/github/Arte3D-Project-Forge/project-forge/blob/main/colab/ComfyUI_Forge_Notebook.ipynb",
         "default_model": "pixelArtDiffusionXL_spriteShaper.safetensors",
@@ -36,7 +37,7 @@
         "scheduler": "karras",
         "workflow": "config/workflows/comfyui_sprite_workflow.json",
         "upscale_workflow": "config/workflows/comfyui_sprite_upscale_workflow.json",
-        "upscale_model": "RealESRGAN_x2plus.pth",
+        "upscale_model": "RealESRGAN_x4plus.pth",
         "positive_suffix": "8-bit pixel art game sprite, hard pixels, crisp pixel clusters, flat colors, dithered shading, sharp edges, clean outlines, single subject, centered, full body, best quality",
         "negative_prompt": "blurry, low quality, deformed, distorted, ugly, bad anatomy, watermark, text, logo, signature, realistic photo, 3d render, multiple subjects, cropped, out of frame, extra limbs, jpeg artifacts, noise, duplicate, monochrome, painterly, painting, brush strokes, smooth, gradient, soft edges, anti-aliasing, illustration, watercolor, oil painting, digital painting, airbrush"
     },

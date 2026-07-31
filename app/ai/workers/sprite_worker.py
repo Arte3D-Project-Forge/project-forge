@@ -118,6 +118,18 @@ class SpriteWorker:
             image = Image.open(path).convert("RGBA")
             width, height = image.size
 
+            max_side = 1024
+            if max(width, height) > max_side:
+                scale = max_side / max(width, height)
+                image = image.resize(
+                    (
+                        max(1, round(width * scale)),
+                        max(1, round(height * scale)),
+                    ),
+                    Image.LANCZOS,
+                )
+                width, height = image.size
+
             grid = max(48, min(192, width // 8))
 
             small = image.resize(
@@ -128,7 +140,14 @@ class SpriteWorker:
                 (width, height),
                 Image.NEAREST
             )
-            pixelated.save(path, "PNG")
+
+            palette_image = pixelated.convert("RGB").quantize(
+                colors=256,
+                method=Image.MEDIANCUT,
+            ).convert("RGBA")
+
+            palette_image.putalpha(pixelated.getchannel("A"))
+            palette_image.save(path, "PNG")
             return path
         except Exception:
             return path

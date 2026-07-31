@@ -1,0 +1,16 @@
+{
+    "asset": "goblin_vermelho_feroz",
+    "type": "audio_package",
+    "tracks": [
+        "main_theme",
+        "biome_theme",
+        "battle_theme",
+        "attack_sfx",
+        "hurt_sfx",
+        "death_sfx",
+        "environment_ambient"
+    ],
+    "style": "Fantasy RPG",
+    "engine": "Godot",
+    "status": "prepared"
+}

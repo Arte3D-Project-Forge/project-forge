@@ -200,5 +200,19 @@
         "display_name": "Create a playable fantasy Mage game sprite for a 2D RPG.\n\nOriginal character inspired by classic JRPGs and the in-game visual quality of modern pixel art adventures like Sea of Stars.\n\nFront-facing idle pose.\n\n64x64 pixel sprite.\n\nBlue robes with gold details.\nBrown leather boots.\nLeather belt.\nWooden staff with a glowing blue crystal.\nYoung adult.\nFriendly face.\nVisible eyes.\nSmall nose.\nConfident expression.\nReadable facial features.\n\nPixel-perfect game sprite.\n\nClean silhouette.\n\nLimited color palette.\n\nSharp pixel clusters.\n\nNo painterly style.\n\nNo concept art.\n\nNo illustration.\n\nNo splash art.\n\nNo poster.\n\nTransparent background.\n\nCentered character.\n\nDesigned as an in-game asset for Godot Engine.\n\nNegative Prompt:\npainting, concept art, illustration, portrait, realistic, anime, 3D, blurry, gradients, cinematic lighting, background, scenery, text, watermark, AI artifacts, character asset, pixel art, 16bit, HD RPG style, high quality, game sprite",
         "type": "character",
         "status": "approved"
+    },
+    {
+        "asset_id": 31,
+        "name": "goblin_vermelho_feroz_pixel_art_sprite_de_inimigo_jogo_rpg",
+        "display_name": "goblin vermelho feroz pixel art, sprite de inimigo, jogo RPG",
+        "type": "character",
+        "status": "approved"
+    },
+    {
+        "asset_id": 32,
+        "name": "goblin_vermelho_feroz_pixel_art_sprite_de_inimigo_jogo_rpg",
+        "display_name": "goblin vermelho feroz pixel art, sprite de inimigo, jogo RPG",
+        "type": "character",
+        "status": "approved"
     }
 ]

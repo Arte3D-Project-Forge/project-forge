@@ -203,7 +203,7 @@ class ComfyUIProvider(ImageProvider):
         }
 
         if use_upscale:
-            values["__UPSCALE_MODEL__"] = self.upscale_model
+            values["__UPSCALE_MODEL__"] = self.find_upscale_model()
 
         return self._fill_template(workflow, values)
 
@@ -282,6 +282,64 @@ class ComfyUIProvider(ImageProvider):
             "ou baixe um .safetensors de civitai.com "
             "e coloque em ComfyUI/models/checkpoints/"
         )
+
+    def find_upscale_model(self):
+        """Usa o modelo configurado; se não existir no servidor,
+        descobre automaticamente o primeiro modelo de upscale
+        disponível (evita erro 400 com servidores do Colab)."""
+
+        try:
+            available = self._available_upscale_models()
+        except Exception:
+            available = []
+
+        if self.upscale_model in available:
+            return self.upscale_model
+
+        if available:
+            return available[0]
+
+        return self.upscale_model
+
+    def _available_upscale_models(self):
+        import ssl
+
+        context = ssl.create_default_context()
+        context.check_hostname = False
+        context.verify_mode = ssl.CERT_NONE
+
+        req = urllib.request.Request(
+            f"{self.base_url}/object_info/UpscaleModelLoader",
+            headers={"User-Agent": "project-forge"}
+        )
+        response = urllib.request.urlopen(
+            req,
+            timeout=20,
+            context=context
+        )
+        data = json.loads(response.read().decode("utf-8"))
+
+        models = (
+            data.get("UpscaleModelLoader", {})
+            .get("input", {})
+            .get("required", {})
+            .get("model_name", [[]])
+        )
+        return self._extract_model_list(models) or []
+
+    def _extract_model_list(self, config_value):
+        """Extrai a lista de opções do formato de object_info.
+
+        ComfyUI retorna ["COMBO", {...options...}] ou uma lista simples.
+        """
+        if not isinstance(config_value, list):
+            return []
+
+        for item in config_value:
+            if isinstance(item, dict) and item.get("options"):
+                return list(item["options"])
+
+        return [x for x in config_value if isinstance(x, str)]
 
     def queue_prompt(self, workflow):
         data = json.dumps({
