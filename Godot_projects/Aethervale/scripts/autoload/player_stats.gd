@@ -89,7 +89,7 @@ func try_spend_mana(cost: int) -> bool:
 
 
 func take_damage(amount: int) -> void:
-	var defense := stats["vit"] * 2
+	var defense: int = int(stats["vit"]) * 2
 	var final_damage := maxi(1, amount - defense)
 	hp_current = maxi(0, hp_current - final_damage)
 	hp_changed.emit(hp_current, hp_max)

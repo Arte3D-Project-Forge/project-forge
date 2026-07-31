@@ -19,9 +19,9 @@ func _physics_process(delta: float) -> void:
 
 	if direction != Vector2.ZERO:
 		_face(direction)
-		if animation.has_animation("walk"):
+		if animation != null and animation.has_animation("walk"):
 			animation.play("walk")
-	elif animation.has_animation("idle"):
+	elif animation != null and animation.has_animation("idle"):
 		animation.play("idle")
 
 

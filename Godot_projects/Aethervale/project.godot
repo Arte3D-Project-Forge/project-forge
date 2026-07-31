@@ -14,7 +14,7 @@ config/name="Aetherva - O Juramento do Mago"
 config/description="MMORPG 2D top-down: Mago Mestre explora 4 biomas, captura monstros como pets e enfrenta bosses e calaboucos tematicos."
 config/version="0.1.0"
 run/main_scene="res://scenes/main.tscn"
-config/features=PackedStringArray("4.2")
+config/features=PackedStringArray("4.7")
 
 [autoload]
 

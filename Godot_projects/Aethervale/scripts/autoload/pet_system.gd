@@ -45,7 +45,7 @@ func evolve_pet(pet_id: String, cost: Dictionary) -> bool:
 	if active_pet.is_empty() or active_pet["id"] != pet_id:
 		return false
 	var forms: Array = DataStore.pets[pet_id].get("evolucoes", [])
-	var next_form := active_pet["form"] + 1
+	var next_form: int = int(active_pet["form"]) + 1
 	if next_form >= forms.size():
 		return false
 	active_pet["form"] = next_form
