@@ -37,6 +37,15 @@ ANIMATIONS = [
 
 STYLE_PRESETS = [
     (
+        "Aetherva (Zelda/FF/Sea)",
+        "HD 2D pixel art, Zelda style, Final Fantasy inspired, Sea of Stars "
+        "aesthetic, isometric-friendly top-down view, detailed pixel shading",
+        "HD 2D pixel art game sprite, Zelda fantasy style, crisp detailed "
+        "pixels, soft warm shading, clean dark outlines, subtle highlights, "
+        "storybook colors, single subject, centered, full body, top-down "
+        "view, best quality, high detail",
+    ),
+    (
         "Pixel Art Retro",
         "pixel art, 8-bit, retro, hard pixels, limited palette",
         "8-bit pixel art game sprite, hard pixels, crisp pixel clusters, "

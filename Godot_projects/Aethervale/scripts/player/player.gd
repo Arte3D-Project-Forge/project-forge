@@ -31,6 +31,36 @@ func _unhandled_input(event: InputEvent) -> void:
 			_cast_primary()
 		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			_cast_secondary()
+	elif event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_C:
+			_try_capture()
+
+
+func _try_capture() -> void:
+	var enemy := _nearest_enemy()
+	if enemy == null:
+		return
+	if enemy is Node and enemy.has_method("is_capturable") and not enemy.is_capturable():
+		return
+	var rarity := "common"
+	if not InventorySystem.use_crystal(rarity):
+		rarity = "rare"
+		if not InventorySystem.use_crystal(rarity):
+			rarity = "legendary"
+			if not InventorySystem.use_crystal(rarity):
+				return
+	CaptureSystem.try_capture(enemy, rarity)
+
+
+func _nearest_enemy() -> Node:
+	var best: Node = null
+	var best_dist := 90.0
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		var d := global_position.distance_to(enemy.global_position)
+		if d < best_dist:
+			best_dist = d
+			best = enemy
+	return best
 
 
 func _cast_primary() -> void:
