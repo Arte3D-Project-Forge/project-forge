@@ -4,11 +4,21 @@ import sys
 import customtkinter as ctk
 
 from app.core.config_manager import ConfigManager
-from app.modules.production.ui.production_window import ProductionWindow
-from app.ui.project_wizard import ProjectWizard
-from app.ui.project_dashboard import ProjectDashboard
-from app.ui.settings_window import SettingsWindow
-from app.ui.sprite_viewer import SpriteViewer
+from app.modules.production.ui.production_window import ProductionView
+from app.ui.forge_view import (
+    ACCENT,
+    ACCENT_HOVER,
+    BG,
+    GRAY,
+    GREEN,
+    MUTED,
+    SIDEBAR_BG,
+    TEXT,
+    font,
+)
+from app.ui.home_view import HomeView
+from app.ui.settings_window import SettingsView
+from app.ui.sprite_viewer import GalleryView
 
 
 ctk.set_appearance_mode("Dark")
@@ -43,30 +53,136 @@ def default_project():
 
 
 class ForgeApp(ctk.CTk):
+    """Janela única: sidebar de navegação + telas (sem abrir guias novas)."""
 
-    CREATE_ITEMS = [
-        ("Personagem", "Character"),
-        ("Inimigo (Mob)", "Mob"),
-        ("Pet / Companheiro", "Pet"),
-        ("Item / Equipamento", "Item"),
-        ("Mapa (Tiles)", "Tiles"),
-        ("Dungeon", "Dungeon"),
-        ("Efeito", "Effects")
+    VIEWS = {
+        "home": HomeView,
+        "studio": ProductionView,
+        "gallery": GalleryView,
+        "settings": SettingsView,
+    }
+
+    NAV_ITEMS = [
+        ("home", "🏠  Início"),
+        ("studio", "⚡  Criar Asset"),
+        ("gallery", "🖼️  Galeria"),
+        ("settings", "⚙️  Configurações"),
     ]
 
     def __init__(self):
-
         super().__init__()
 
         self.title("Project Forge")
-        self.geometry("900x620")
+        self.geometry("1080x740")
+        self.minsize(960, 640)
 
         self.config = ConfigManager()
         self.project = default_project()
 
-        self.create_ui()
+        self.build_ui()
 
         self._start_sync_poller()
+        self._start_status_poller()
+
+    # ==========================
+    # UI
+    # ==========================
+
+    def build_ui(self):
+        self.configure(fg_color=BG)
+
+        self.sidebar = ctk.CTkFrame(
+            self,
+            width=210,
+            fg_color=SIDEBAR_BG,
+            corner_radius=0,
+        )
+        self.sidebar.pack(side="left", fill="y")
+        self.sidebar.pack_propagate(False)
+
+        self.content = ctk.CTkFrame(self, fg_color=BG, corner_radius=0)
+        self.content.pack(side="left", fill="both", expand=True)
+
+        self._build_sidebar()
+        self.show_view("home")
+
+    def _build_sidebar(self):
+        logo = ctk.CTkLabel(
+            self.sidebar,
+            text="PROJECT\nFORGE",
+            font=font(20, "bold"),
+            text_color=ACCENT,
+            justify="center",
+        )
+        logo.pack(pady=(28, 4))
+
+        tagline = ctk.CTkLabel(
+            self.sidebar,
+            text="AI Game Dev OS",
+            font=font(11),
+            text_color=MUTED,
+        )
+        tagline.pack(pady=(0, 24))
+
+        self.nav_buttons = {}
+
+        for view, label in self.NAV_ITEMS:
+            button = ctk.CTkButton(
+                self.sidebar,
+                text=label,
+                height=42,
+                corner_radius=10,
+                fg_color="transparent",
+                hover_color=ACCENT_HOVER,
+                text_color=TEXT,
+                anchor="w",
+                font=font(13, "bold"),
+                command=lambda v=view: self.show_view(v),
+            )
+            button.pack(fill="x", padx=14, pady=4)
+            self.nav_buttons[view] = button
+
+        spacer = ctk.CTkFrame(self.sidebar, fg_color="transparent")
+        spacer.pack(fill="both", expand=True)
+
+        self.status_dot = ctk.CTkLabel(
+            self.sidebar,
+            text="●",
+            font=font(14),
+            text_color=GRAY,
+        )
+        self.status_dot.pack(pady=(0, 0))
+
+        self.status_label = ctk.CTkLabel(
+            self.sidebar,
+            text="ComfyUI: offline",
+            font=font(11),
+            text_color=MUTED,
+        )
+        self.status_label.pack(pady=(0, 16))
+
+    def show_view(self, view, **kwargs):
+        for widget in self.content.winfo_children():
+            widget.destroy()
+
+        view_class = self.VIEWS[view]
+        instance = view_class(
+            self.content,
+            app=self,
+            project=self.project,
+            **kwargs,
+        )
+        instance.pack(fill="both", expand=True)
+
+        for name, button in self.nav_buttons.items():
+            if name == view:
+                button.configure(fg_color=ACCENT)
+            else:
+                button.configure(fg_color="transparent")
+
+    # ==========================
+    # STATUS COMfyUI
+    # ==========================
 
     def _start_sync_poller(self):
         from app.services.comfyui_sync import (
@@ -81,161 +197,33 @@ class ForgeApp(ctk.CTk):
         except Exception:
             self.sync_poller = None
 
-    # ==========================
-    # UI
-    # ==========================
+    def _start_status_poller(self):
+        import threading
 
-    def create_ui(self):
+        from app.services.comfyui_sync import ComfyUISync
 
-        title = ctk.CTkLabel(
-            self,
-            text="PROJECT FORGE",
-            font=("Arial", 32, "bold")
-        )
-        title.pack(pady=(35, 0))
-
-        subtitle = ctk.CTkLabel(
-            self,
-            text="Crie personagens, mapas e assets para o seu jogo",
-            font=("Arial", 15)
-        )
-        subtitle.pack(pady=(0, 20))
-
-        section = ctk.CTkLabel(
-            self,
-            text="O QUE VOCÊ QUER CRIAR?",
-            font=("Arial", 17, "bold")
-        )
-        section.pack(pady=(5, 5))
-
-        self.create_category_grid()
-
-        footer = ctk.CTkFrame(
-            self,
-            fg_color="transparent"
-        )
-        footer.pack(pady=20)
-
-        btn_gallery = ctk.CTkButton(
-            footer,
-            text="VER SPRITES GERADOS",
-            fg_color="green",
-            hover_color="darkgreen",
-            height=40,
-            font=("Arial", 13, "bold"),
-            command=self.open_gallery
-        )
-        btn_gallery.pack(
-            side="left",
-            padx=8
-        )
-
-        btn_settings = ctk.CTkButton(
-            footer,
-            text="Configurações",
-            height=40,
-            command=self.open_settings
-        )
-        btn_settings.pack(
-            side="left",
-            padx=8
-        )
-
-        btn_exit = ctk.CTkButton(
-            footer,
-            text="Sair",
-            height=40,
-            fg_color="gray",
-            hover_color="darkgray",
-            command=self.destroy
-        )
-        btn_exit.pack(
-            side="left",
-            padx=8
-        )
-
-        note = ctk.CTkLabel(
-            self,
-            text=(
-                "Geração automática: qualidade otimizada para sprites de jogo. "
-                "Sem configuração necessária."
-            ),
-            font=("Arial", 11),
-            text_color="gray"
-        )
-        note.pack(side="bottom", pady=10)
-
-    def create_category_grid(self):
-
-        grid = ctk.CTkFrame(
-            self,
-            fg_color="transparent"
-        )
-        grid.pack(padx=40)
-
-        cols = 3
-        row = None
-
-        for index, (label, category) in enumerate(
-            self.CREATE_ITEMS
-        ):
-
-            if index % cols == 0:
-                row = ctk.CTkFrame(
-                    grid,
-                    fg_color="transparent"
+        def poll():
+            while True:
+                threading.Event().wait(10)
+                url = (
+                    self.config.config.get("comfyui", {})
+                    .get("server_url", "")
+                    .strip()
+                    .rstrip("/")
                 )
-                row.pack(pady=4)
+                online = bool(url) and ComfyUISync.url_alive(url)
+                self.after(0, lambda ok=online: self._update_status(ok))
 
-            button = ctk.CTkButton(
-                row,
-                text=label,
-                width=250,
-                height=55,
-                font=("Arial", 14, "bold"),
-                command=lambda c=category:
-                    self.create_asset(c)
-            )
-            button.pack(
-                side="left",
-                padx=6
-            )
+        threading.Thread(target=poll, daemon=True).start()
 
-    # ==========================
-    # AÇÕES
-    # ==========================
-
-    def create_asset(self, category):
-
-        window = ProductionWindow(
-            self,
-            self.project,
-            category=category
+    def _update_status(self, online):
+        self.status_dot.configure(
+            text_color=GREEN if online else GRAY
         )
-        window.focus()
-
-    def open_gallery(self):
-
-        viewer = SpriteViewer(
-            self,
-            self.project
+        self.status_label.configure(
+            text="ComfyUI: conectado" if online else "ComfyUI: offline",
+            text_color=GREEN if online else MUTED,
         )
-        viewer.focus()
-
-    def open_settings(self):
-
-        window = SettingsWindow(self)
-        window.focus()
-
-    def new_project(self):
-
-        wizard = ProjectWizard(self)
-        wizard.focus()
-
-    def open_project(self):
-
-        dashboard = ProjectDashboard(self)
-        dashboard.focus()
 
 
 def main():
