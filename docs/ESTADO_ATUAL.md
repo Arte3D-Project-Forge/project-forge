@@ -7,6 +7,9 @@
 >
 > Última atualização: **31/07/2026** (sessão completa de validação)
 > Status geral: **FUNCIONANDO** (geração profissional ponta-a-ponta)
+>
+> **NOVO (31/07 tarde):** o projeto de jogo **Aetherva** (Godot) começou —
+> pré-produção completa em `Godot_projects/Aethervale/docs/`.
 
 ---
 
@@ -239,6 +242,7 @@ Se o workflow de upscale falhar (ex.: modelo não existe no servidor),
 | `colab/ComfyUI_Forge_Notebook.ipynb` | Notebook do Colab |
 | `docs/imagens/` | Galeria central de imagens de teste |
 | `docs/PROJECT_FORGE_BIBLE.md` | Bíblia do projeto (visão) |
+| `Godot_projects/Aethervale/` | **Jogo Aetherva (pré-produção)** — docs + projeto Godot inicial |
 | `COMO_CONTINUAR.md` | Guia operacional resumido |
 | `run.py`, `ProjectForge.spec` | Entry + build |
 

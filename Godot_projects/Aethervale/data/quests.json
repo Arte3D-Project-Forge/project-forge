@@ -1,0 +1,23 @@
+{
+  "captura_primeira_tola": {
+    "nome": "Primeira Companhia",
+    "dado_por": "seeria",
+    "objetivo": { "tipo": "capturar", "target": 1, "monster": "tola" },
+    "recompensas": { "mana": 50, "crystal": "rare" },
+    "descricao": "Capture uma Tola e descubra a beleza do vinculo."
+  },
+  "purificar_vale": {
+    "nome": "O Juramento do Vale",
+    "dado_por": "seeria",
+    "objetivo": { "tipo": "derrotar", "target": 1, "monster": "vassalo_almaris" },
+    "recompensas": { "mana": 200, "essence": "essencia_pura_terra", "xp": 80 },
+    "descricao": "Liberte o Guardiao Almaris da corrupcao."
+  },
+  "coletar_essencias": {
+    "nome": "Essencias do Vale",
+    "dado_por": "puck",
+    "objetivo": { "tipo": "coletar", "target": 5, "item": "essencia_tola" },
+    "recompensas": { "mana": 60, "crystal": "common" },
+    "descricao": "Colete 5 essencias de Tola para Puck."
+  }
+}

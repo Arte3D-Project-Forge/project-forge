@@ -1,0 +1,42 @@
+{
+  "brasa": {
+    "escola": "fogo", "nome": "Brasa", "custo": 5, "dano": 10,
+    "status": "queimadura", "projetil": true
+  },
+  "labareda": {
+    "escola": "fogo", "nome": "Labareda", "custo": 12, "dano": 22,
+    "status": "queimadura", "projetil": true
+  },
+  "lamina_vento": {
+    "escola": "vento", "nome": "Lamina de Vento", "custo": 5, "dano": 9,
+    "status": "", "projetil": true
+  },
+  "rajada": {
+    "escola": "vento", "nome": "Rajada", "custo": 11, "dano": 18,
+    "status": "empurrao", "projetil": true
+  },
+  "pedra_protetora": {
+    "escola": "terra", "nome": "Pedra Protetora", "custo": 8, "dano": 0,
+    "status": "escudo", "projetil": false
+  },
+  "terremoto": {
+    "escola": "terra", "nome": "Terremoto", "custo": 14, "dano": 16,
+    "status": "lentidao", "projetil": false
+  },
+  "raio": {
+    "escola": "trovao", "nome": "Raio", "custo": 8, "dano": 12,
+    "status": "paralisia", "projetil": true
+  },
+  "gota_gelada": {
+    "escola": "agua", "nome": "Gota Gelada", "custo": 6, "dano": 9,
+    "status": "lentidao", "projetil": true
+  },
+  "lanca_gelo": {
+    "escola": "gelo", "nome": "Lanca de Gelo", "custo": 10, "dano": 15,
+    "status": "congelado", "projetil": true
+  },
+  "corrente_luz": {
+    "escola": "luz", "nome": "Corrente de Luz", "custo": 12, "dano": 15,
+    "status": "purifica", "projetil": true
+  }
+}

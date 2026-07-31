@@ -1,0 +1,66 @@
+{
+  "aetherport": {
+    "nome": "Aetherport", "tipo": "vila",
+    "clima": "ameno",
+    "nivel_recomendado": 1,
+    "dungeon": "",
+    "boss": "",
+    "inimigos": [],
+    "baús": []
+  },
+  "vale_verdejante": {
+    "nome": "O Vale Verdejante", "tipo": "bioma",
+    "clima": "floresta dourada",
+    "weaver": "almaris",
+    "elemento": "terra",
+    "nivel_recomendado": 1,
+    "dungeon": "tumba_almaris",
+    "boss": "vassalo_almaris",
+    "inimigos": ["tola", "vagalume_corrompido", "raposa_musgo", "tronco_andarilho", "fada_negra", "coruja_folhas"],
+    "baús": ["comum", "comum", "raro"]
+  },
+  "serraria_brasas": {
+    "nome": "A Serraria de Brasas", "tipo": "bioma",
+    "clima": "vulcanico",
+    "weaver": "kelvin",
+    "elemento": "fogo",
+    "nivel_recomendado": 10,
+    "dungeon": "forja_perdida",
+    "boss": "forjado_kelvin",
+    "inimigos": ["corvo_cinza", "salamandra", "golem_brasa"],
+    "baús": ["comum", "raro", "raro"]
+  },
+  "profundezas": {
+    "nome": "As Profundezas Sussurrantes", "tipo": "bioma",
+    "clima": "enevoado",
+    "weaver": "maralda",
+    "elemento": "agua",
+    "nivel_recomendado": 20,
+    "dungeon": "cripta_coral",
+    "boss": "maralda_relembrada",
+    "inimigos": ["caranguejo_mare", "anemone_sussurrante"],
+    "baús": ["comum", "raro", "epico"]
+  },
+  "alta_coroa": {
+    "nome": "A Alta Coroa", "tipo": "bioma",
+    "clima": "gelado",
+    "weaver": "zephyrion",
+    "elemento": "vento",
+    "nivel_recomendado": 30,
+    "dungeon": "ninho_tempestade",
+    "boss": "zephyrion_cindido",
+    "inimigos": ["harpia_jovem", "yetil_cume"],
+    "baús": ["raro", "epico", "epico"]
+  },
+  "torre_selada": {
+    "nome": "A Torre Selada", "tipo": "dungeon_final",
+    "clima": "sombrio",
+    "weaver": "",
+    "elemento": "sombra",
+    "nivel_recomendado": 40,
+    "dungeon": "torre_selada",
+    "boss": "seria_corrompida",
+    "inimigos": [],
+    "baús": ["lendario"]
+  }
+}

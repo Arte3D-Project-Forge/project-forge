@@ -1,0 +1,42 @@
+{
+  "seria": {
+    "default": [
+      "Bem-vindo de volta a Torre, aprendiz.",
+      "A Eclipsia sussurra nos quatro cantos de Aetheria.",
+      "Purifique os biomas. Colete as essencias. E me encontre no selo."
+    ],
+    "quest": [
+      "O Vale Verdejante esta contaminado por raizes negras.",
+      "Encontre a Tumba de Almaris e liberte o Guardiao.",
+      "Leve um Cristal de Captura — os monstros merecem compreensao, nao so morte."
+    ]
+  },
+  "tayla": {
+    "default": [
+      "Cristais de captura! Os melhores de Aetherport.",
+      "Toda criatura tem uma essencia. Enfraqueca-a e aprisione-a com carinho.",
+      "Passe por aqui quando quiser mais suprimentos."
+    ]
+  },
+  "brom": {
+    "default": [
+      "A forja de Brasilume me ensinou que tudo se conserta.",
+      "Chaves de bao? Faco as melhores da Aetheria.",
+      "Uma boa arma vale mais que mil feiticos. Mas voce e mago... entao duas mil."
+    ]
+  },
+  "puck": {
+    "default": [
+      "Mana pra trocar? Essencias? Pets raros?",
+      "Eu viajo pelos quatro cantos. Se existe, eu vendo.",
+      "Cuide bem dos seus pets, mestre. Eles sentem."
+    ]
+  },
+  "voss": {
+    "default": [
+      "O grimorio guarda mais do que feiticos. Guarda memorias.",
+      "Purifique essencias para desbloquear novos versos.",
+      "A magia e compreensao, nao poder. Lembre-se sempre."
+    ]
+  }
+}

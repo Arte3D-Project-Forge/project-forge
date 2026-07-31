@@ -1,0 +1,26 @@
+{
+  "tola": {
+    "nome": "Tola", "elemento": "terra",
+    "evolucoes": [
+      { "nivel": 1, "sprite": "tola.png" },
+      { "nivel": 10, "requer": { "essencia_tola": 3, "item": "semente_almaris" }, "sprite": "tola_cristal.png" },
+      { "nivel": 25, "requer": { "essencia_tola": 6, "item": "cristal_lendario" }, "sprite": "tola_suprema.png" }
+    ]
+  },
+  "coruja_folhas": {
+    "nome": "Coruja de Folhas", "elemento": "vento",
+    "evolucoes": [
+      { "nivel": 1, "sprite": "coruja.png" },
+      { "nivel": 12, "requer": { "essencia_coruja": 4, "item": "pena_zephyr" }, "sprite": "coruja_fenix.png" },
+      { "nivel": 30, "requer": { "essencia_coruja": 8, "item": "cristal_lendario" }, "sprite": "coruja_suprema.png" }
+    ]
+  },
+  "salamandra": {
+    "nome": "Salamandra", "elemento": "fogo",
+    "evolucoes": [
+      { "nivel": 1, "sprite": "salamandra.png" },
+      { "nivel": 12, "requer": { "essencia_salamandra": 4, "item": "brasa_kelvin" }, "sprite": "salamandra_brasa.png" },
+      { "nivel": 28, "requer": { "essencia_salamandra": 7, "item": "cristal_lendario" }, "sprite": "salamandra_suprema.png" }
+    ]
+  }
+}

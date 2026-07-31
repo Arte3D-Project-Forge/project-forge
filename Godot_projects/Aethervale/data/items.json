@@ -1,0 +1,57 @@
+{
+  "potcao_mana": {
+    "nome": "Pocao de Mana", "raridade": "comum",
+    "tipo": "consumivel", "efeito": { "mana": 30 },
+    "preco": 15
+  },
+  "pocao_vida": {
+    "nome": "Pocao de Vida", "raridade": "comum",
+    "tipo": "consumivel", "efeito": { "hp": 40 },
+    "preco": 20
+  },
+  "cristal_captura": {
+    "nome": "Cristal de Captura", "raridade": "comum",
+    "tipo": "consumivel", "efeito": { "captura": "common" },
+    "preco": 25
+  },
+  "cristal_raro": {
+    "nome": "Cristal Raro", "raridade": "raro",
+    "tipo": "consumivel", "efeito": { "captura": "rare" },
+    "preco": 60
+  },
+  "cristal_lendario": {
+    "nome": "Cristal Lendario", "raridade": "lendario",
+    "tipo": "consumivel", "efeito": { "captura": "legendary" },
+    "preco": 150
+  },
+  "isca_mana": {
+    "nome": "Isca de Mana", "raridade": "raro",
+    "tipo": "consumivel", "efeito": { "atrai_raro": 30 },
+    "preco": 45
+  },
+  "semente_almaris": {
+    "nome": "Semente de Almaris", "raridade": "epico",
+    "tipo": "evolucao", "efeito": {},
+    "preco": 0
+  },
+  "brasa_kelvin": {
+    "nome": "Brasa de Kelvin", "raridade": "epico",
+    "tipo": "evolucao", "efeito": {},
+    "preco": 0
+  },
+  "pena_zephyr": {
+    "nome": "Pena de Zephyr", "raridade": "epico",
+    "tipo": "evolucao", "efeito": {},
+    "preco": 0
+  },
+  "chave_calabouco": {
+    "nome": "Chave do Calabouco", "raridade": "raro",
+    "tipo": "chave", "efeito": {},
+    "preco": 0
+  },
+  "pagina_grimorio": {
+    "nome": "Pagina do Grimorio", "raridade": "epico",
+    "tipo": "grimorio", "efeito": {},
+    "preco": 0
+  }
+}

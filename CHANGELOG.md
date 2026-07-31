@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.2.0 (31/07/2026)
+
+### Novo: Jogo Aetherva (Godot) — pré-produção completa
+- Criado `Godot_projects/Aethervale/` — novo jogo MMORPG 2D top-down na Godot 4.
+- **Lore do Mago Mestre** (protagonista) + mundo Aetheria com 4 biomas
+  (Vale Verdejante, Serraria de Brasas, Profundezas, Alta Coroa) + Torre Selada,
+  inspirado em Zelda, Final Fantasy e Ragnarok Online.
+- **GDD completo** (pilares, loops, progressão, combate, baús, quêtes).
+- **Sistemas**: captura de monstros, pets com evolução, baús de recompensa
+  (4 raridades), dungeons e bosses por bioma.
+- **Projeto Godot funcional**: `project.godot`, 10 autoloads (GameState,
+  PlayerStats, Grimoire, CaptureSystem, PetSystem, InventorySystem,
+  QuestSystem, DialogueSystem, SaveSystem, DataStore), cena principal,
+  player com movimento/casting, projétil.
+- **Dados em JSON** (`data/`): monsters, magias, pets, items, quests,
+  dialogue, biomes, loot_tables, dungeons — editáveis e geráveis pelo Forge.
+- Documentação completa em `Godot_projects/Aethervale/docs/`
+  (00_MASTER a 06_ROADMAP).
+
 ## 0.1.0 (31/07/2026)
 
 ### Interface em janela única (UI Redesign)

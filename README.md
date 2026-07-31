@@ -22,6 +22,14 @@ com geração de **sprites de pixel art profissional**.
 - **Presets rápidos**: animação (Idle, Walk, Attack...) e estilo (Pixel Retro,
   Anime, Cyberpunk, Chibi...) com sufixo de prompt por estilo.
 
+## 🎮 Jogo em desenvolvimento: AETHERVA
+
+Um MMORPG 2D top-down na Godot 4 onde um **Mago Mestre** explora 4 biomas,
+captura monstros como pets, e enfrenta bosses e calabouços temáticos
+(inspirado em Zelda, Final Fantasy e Ragnarok Online).
+Pré-produção completa em `Godot_projects/Aethervale/docs/` — lore, GDD,
+biomas, sistemas e arquitetura Godot prontos.
+
 ## 🚀 Como rodar
 
 ```powershell

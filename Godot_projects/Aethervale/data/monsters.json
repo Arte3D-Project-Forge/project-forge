@@ -1,0 +1,129 @@
+{
+  "tola": {
+    "nome": "Tola",
+    "elemento": "terra",
+    "hp": 20, "atk": 3, "def": 1, "vel": 2,
+    "fraca_a": "fogo",
+    "base_captura": 0.60,
+    "loot": { "mana": [5, 15], "essencia_tola": 0.8 },
+    "sprite": "res://assets/sprites/characters/tola.png"
+  },
+  "vagalume_corrompido": {
+    "nome": "Vaga-lume Corrompido",
+    "elemento": "luz",
+    "hp": 15, "atk": 2, "def": 0, "vel": 3,
+    "fraca_a": "vento",
+    "base_captura": 0.65,
+    "loot": { "mana": [3, 8], "brilho_mana": 0.6 },
+    "sprite": "res://assets/sprites/characters/vagalume.png"
+  },
+  "raposa_musgo": {
+    "nome": "Raposa Musgo",
+    "elemento": "terra",
+    "hp": 32, "atk": 5, "def": 2, "vel": 3,
+    "fraca_a": "gelo",
+    "base_captura": 0.45,
+    "loot": { "mana": [8, 18], "essencia_raposa": 0.5 },
+    "sprite": "res://assets/sprites/characters/raposa.png"
+  },
+  "tronco_andarilho": {
+    "nome": "Tronco Andarilho",
+    "elemento": "terra",
+    "hp": 48, "atk": 7, "def": 4, "vel": 1,
+    "fraca_a": "fogo",
+    "base_captura": 0.35,
+    "loot": { "mana": [10, 22], "madeira_dura": 0.6 },
+    "sprite": "res://assets/sprites/characters/tronco.png"
+  },
+  "fada_negra": {
+    "nome": "Fada Negra",
+    "elemento": "sombra",
+    "hp": 28, "atk": 6, "def": 1, "vel": 4,
+    "fraca_a": "luz",
+    "base_captura": 0.50,
+    "loot": { "mana": [6, 14], "po_fada": 0.7 },
+    "sprite": "res://assets/sprites/characters/fada_negra.png"
+  },
+  "coruja_folhas": {
+    "nome": "Coruja de Folhas",
+    "elemento": "vento",
+    "hp": 40, "atk": 5, "def": 2, "vel": 3,
+    "fraca_a": "fogo",
+    "base_captura": 0.30,
+    "loot": { "mana": [15, 25], "essencia_coruja": 0.6 },
+    "sprite": "res://assets/sprites/characters/coruja.png"
+  },
+  "corvo_cinza": {
+    "nome": "Corvo de Cinza",
+    "elemento": "fogo",
+    "hp": 35, "atk": 5, "def": 1, "vel": 3,
+    "fraca_a": "gelo",
+    "base_captura": 0.45,
+    "loot": { "mana": [8, 18], "cinza_viva": 0.6 },
+    "sprite": "res://assets/sprites/characters/corvo_cinza.png"
+  },
+  "salamandra": {
+    "nome": "Salamandra",
+    "elemento": "fogo",
+    "hp": 42, "atk": 7, "def": 2, "vel": 3,
+    "fraca_a": "agua",
+    "base_captura": 0.40,
+    "loot": { "mana": [10, 20], "escama_igenea": 0.5 },
+    "sprite": "res://assets/sprites/characters/salamandra.png"
+  },
+  "golem_brasa": {
+    "nome": "Golem de Brasa",
+    "elemento": "fogo",
+    "hp": 60, "atk": 9, "def": 5, "vel": 1,
+    "fraca_a": "agua",
+    "base_captura": 0.30,
+    "loot": { "mana": [15, 28], "brasa_nucleo": 0.5 },
+    "sprite": "res://assets/sprites/characters/golem.png"
+  },
+  "caranguejo_mare": {
+    "nome": "Caranguejo de Mare",
+    "elemento": "agua",
+    "hp": 45, "atk": 6, "def": 4, "vel": 2,
+    "fraca_a": "trovao",
+    "base_captura": 0.40,
+    "loot": { "mana": [10, 20], "carapaca": 0.6 },
+    "sprite": "res://assets/sprites/characters/caranguejo.png"
+  },
+  "anemone_sussurrante": {
+    "nome": "Anemone Sussurrante",
+    "elemento": "agua",
+    "hp": 30, "atk": 4, "def": 1, "vel": 1,
+    "fraca_a": "vento",
+    "base_captura": 0.50,
+    "loot": { "mana": [6, 14], "tentaculo": 0.6 },
+    "sprite": "res://assets/sprites/characters/anemone.png"
+  },
+  "harpia_jovem": {
+    "nome": "Harpia Jovem",
+    "elemento": "vento",
+    "hp": 40, "atk": 6, "def": 1, "vel": 4,
+    "fraca_a": "gelo",
+    "base_captura": 0.45,
+    "loot": { "mana": [10, 20], "pena_vento": 0.6 },
+    "sprite": "res://assets/sprites/characters/harpia.png"
+  },
+  "yetil_cume": {
+    "nome": "Yeti de Cume",
+    "elemento": "gelo",
+    "hp": 70, "atk": 10, "def": 4, "vel": 2,
+    "fraca_a": "fogo",
+    "base_captura": 0.30,
+    "loot": { "mana": [18, 32], "pelo_yeti": 0.5 },
+    "sprite": "res://assets/sprites/characters/yeti.png"
+  },
+  "vassalo_almaris": {
+    "nome": "Vassalo de Almaris",
+    "elemento": "terra",
+    "hp": 300, "atk": 18, "def": 8, "vel": 1,
+    "fraca_a": "fogo",
+    "base_captura": 0.0,
+    "boss": true,
+    "loot": { "essencia_pura_terra": 1.0 },
+    "sprite": "res://assets/sprites/characters/vassalo.png"
+  }
+}

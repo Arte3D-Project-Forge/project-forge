@@ -1,0 +1,54 @@
+{
+  "tumba_almaris": {
+    "bioma": "vale_verdejante",
+    "nome": "A Tumba de Almaris",
+    "tema": "ruinas subterraneas",
+    "salas": [
+      {
+        "nome": "Patio dos Espinhos",
+        "tipo": "armadilha",
+        "inimigos": ["tola", "tola", "tronco_andarilho"],
+        "baús": ["comum"]
+      },
+      {
+        "nome": "Camara dos Espelhos",
+        "tipo": "puzzle_luz",
+        "inimigos": ["fada_negra", "fada_negra"],
+        "baús": ["raro"]
+      },
+      {
+        "nome": "Camara do Guardiao",
+        "tipo": "boss",
+        "inimigos": [],
+        "boss": "vassalo_almaris",
+        "baús": ["epico"]
+      }
+    ]
+  },
+  "forja_perdida": {
+    "bioma": "serraria_brasas",
+    "nome": "A Forja Perdida",
+    "tema": "fundicoes de lava",
+    "salas": [
+      {
+        "nome": "Passarela de Lava",
+        "tipo": "plataforma",
+        "inimigos": ["corvo_cinza", "salamandra"],
+        "baús": ["comum"]
+      },
+      {
+        "nome": "Forja-Gigante",
+        "tipo": "puzzle_valvulas",
+        "inimigos": ["golem_brasa"],
+        "baús": ["raro"]
+      },
+      {
+        "nome": "Camara do Guardiao",
+        "tipo": "boss",
+        "inimigos": [],
+        "boss": "forjado_kelvin",
+        "baús": ["epico"]
+      }
+    ]
+  }
+}

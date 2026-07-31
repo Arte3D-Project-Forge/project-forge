@@ -1,0 +1,38 @@
+{
+  "vale_verdejante": {
+    "comum": [
+      { "item": "mana", "peso": 50, "min": 20, "max": 50 },
+      { "item": "pocao_vida", "peso": 30, "min": 1, "max": 1 },
+      { "item": "cristal_captura", "peso": 20, "min": 1, "max": 2 }
+    ],
+    "raro": [
+      { "item": "essencia_fada_negra", "peso": 30, "min": 1, "max": 1 },
+      { "item": "cristal_raro", "peso": 30, "min": 1, "max": 1 },
+      { "item": "pagina_grimorio", "peso": 20, "min": 1, "max": 1 },
+      { "item": "mana", "peso": 20, "min": 50, "max": 100 }
+    ],
+    "epico": [
+      { "item": "semente_almaris", "peso": 40, "min": 1, "max": 1 },
+      { "item": "pagina_grimorio", "peso": 35, "min": 1, "max": 1 },
+      { "item": "cristal_raro", "peso": 25, "min": 2, "max": 3 }
+    ]
+  },
+  "serraria_brasas": {
+    "comum": [
+      { "item": "mana", "peso": 50, "min": 30, "max": 70 },
+      { "item": "pocao_vida", "peso": 30, "min": 1, "max": 2 },
+      { "item": "cristal_captura", "peso": 20, "min": 1, "max": 2 }
+    ],
+    "raro": [
+      { "item": "brasa_kelvin", "peso": 30, "min": 1, "max": 1 },
+      { "item": "escama_igenea", "peso": 30, "min": 1, "max": 2 },
+      { "item": "pagina_grimorio", "peso": 20, "min": 1, "max": 1 },
+      { "item": "cristal_raro", "peso": 20, "min": 1, "max": 2 }
+    ],
+    "epico": [
+      { "item": "brasa_kelvin", "peso": 40, "min": 1, "max": 1 },
+      { "item": "pagina_grimorio", "peso": 35, "min": 1, "max": 1 },
+      { "item": "cristal_raro", "peso": 25, "min": 2, "max": 3 }
+    ]
+  }
+}
