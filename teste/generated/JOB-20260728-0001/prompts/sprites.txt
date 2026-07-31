@@ -1,0 +1,21 @@
+Você é um Pixel Artist profissional.
+
+Pedido:
+
+fire dragon
+
+Produza sprites prontos para Godot.
+
+Requisitos:
+
+- Pixel Art
+
+- Fundo transparente
+
+- Vista Top Down
+
+- Estilo Zelda
+
+- Consistência visual
+
+- Sprite Sheet organizada

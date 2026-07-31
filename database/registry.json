@@ -32,5 +32,110 @@
         "display_name": "criar_um_dragão",
         "type": "character",
         "status": "approved"
+    },
+    {
+        "asset_id": 7,
+        "name": "criar_um_dragao",
+        "display_name": "criar_um_dragão",
+        "type": "character",
+        "status": "approved"
+    },
+    {
+        "asset_id": 8,
+        "name": "criar_um_dragao_de_fogo_ancestral_pixel_art_para_rpg",
+        "display_name": "Criar um dragão de fogo ancestral pixel art para RPG",
+        "type": "character",
+        "status": "approved"
+    },
+    {
+        "asset_id": 9,
+        "name": "criar_um_dragao_de_fogo_ancestral_pixel_art_para_rpg",
+        "display_name": "Criar um dragão de fogo ancestral pixel art para RPG",
+        "type": "character",
+        "status": "approved"
+    },
+    {
+        "asset_id": 10,
+        "name": "criar_um_dragao",
+        "display_name": "criar_um_dragão",
+        "type": "character",
+        "status": "approved"
+    },
+    {
+        "asset_id": 11,
+        "name": "criar_um_dragao_de_fogo_ancestral_pixel_art_para_rpg",
+        "display_name": "Criar um dragão de fogo ancestral pixel art para RPG",
+        "type": "character",
+        "status": "approved"
+    },
+    {
+        "asset_id": 12,
+        "name": "red_fire_dragon_pixel_art_character",
+        "display_name": "red fire dragon pixel art character",
+        "type": "character",
+        "status": "approved"
+    },
+    {
+        "asset_id": 13,
+        "name": "fire_dragon",
+        "display_name": "fire dragon",
+        "type": "character",
+        "status": "approved"
+    },
+    {
+        "asset_id": 14,
+        "name": "fire_dragon_pixel_art",
+        "display_name": "fire dragon pixel art",
+        "type": "character",
+        "status": "approved"
+    },
+    {
+        "asset_id": 15,
+        "name": "fire_dragon_pixel_art",
+        "display_name": "fire dragon pixel art",
+        "type": "character",
+        "status": "approved"
+    },
+    {
+        "asset_id": 16,
+        "name": "criar_um_dragao",
+        "display_name": "criar_um_dragão",
+        "type": "character",
+        "status": "approved"
+    },
+    {
+        "asset_id": 17,
+        "name": "criar_um_dragao_de_fogo_ancestral_pixel_art_para_rpg",
+        "display_name": "Criar um dragão de fogo ancestral pixel art para RPG",
+        "type": "character",
+        "status": "approved"
+    },
+    {
+        "asset_id": 18,
+        "name": "create_a_professional_48x48_pixel_art_sprite_sheet_of_a_medieval_fantasy_blacksmith_character_for_a_2d_rpg_gamestyle_inspired_by_final_fantasy_ragnarok_online_the_legend_of_zelda_chrono_trigger_and_classic_gbasnes_jrpgscharacter_design_strong_blacksmith_warrior_short_dark_hair_beard_leather_forge_apron_gloves_heavy_boots_tool_belt_metal_accessories_large_forging_hammer_warm_brown_and_steel_color_palette_keep_the_exact_same_character_design_in_every_framesprite_sheet_animationsidle_4_frames_walk_cycle_8_frames_hammer_attack_6_frames_forge__anvil_interaction_6_frames_combat_attack_6_frames_hurt_reaction_4_frames_death_animation_6_framesrequirements48x48_pixel_frames_transparent_background_game_ready_sprite_sheet_pixel_perfect_snesgba_style_clean_silhouette_limited_color_palette_sharp_pixel_clusters_consistent_lighting_and_proportions_compatible_with_godot_unity_2d_and_rpg_makernegative_blurry_realistic_3d_painterly_anime_gradients_smooth_shading_inconsistent_character_different_clothes_different_face_extra_limbs_distorted_anatomy_background_text_watermark_ai_artifacts_character_asset_pixel_art_16bit_hd_rpg_style_high_quality_game_sprite",
+        "display_name": "Create a professional 48x48 pixel art sprite sheet of a medieval fantasy Blacksmith character for a 2D RPG game.\n\nStyle inspired by Final Fantasy, Ragnarok Online, The Legend of Zelda, Chrono Trigger and classic GBA/SNES JRPGs.\n\nCharacter design: strong blacksmith warrior, short dark hair, beard, leather forge apron, gloves, heavy boots, tool belt, metal accessories, large forging hammer, warm brown and steel color palette. Keep the exact same character design in every frame.\n\nSprite sheet animations:\nIdle (4 frames), Walk cycle (8 frames), Hammer Attack (6 frames), Forge / Anvil interaction (6 frames), Combat Attack (6 frames), Hurt reaction (4 frames), Death animation (6 frames).\n\nRequirements:\n48x48 pixel frames, transparent background, game-ready sprite sheet, pixel-perfect SNES/GBA style, clean silhouette, limited color palette, sharp pixel clusters, consistent lighting and proportions, compatible with Godot, Unity 2D and RPG Maker.\n\nNegative: blurry, realistic, 3D, painterly, anime, gradients, smooth shading, inconsistent character, different clothes, different face, extra limbs, distorted anatomy, background, text, watermark, AI artifacts, character asset, pixel art, 16bit, HD RPG style, high quality, game sprite",
+        "type": "character",
+        "status": "approved"
+    },
+    {
+        "asset_id": 19,
+        "name": "create_a_professional_48x48_pixel_art_sprite_sheet_of_a_medieval_fantasy_blacksmith_character_for_a_2d_rpg_gamestyle_inspired_by_final_fantasy_ragnarok_online_the_legend_of_zelda_chrono_trigger_and_classic_gbasnes_jrpgscharacter_design_strong_blacksmith_warrior_short_dark_hair_beard_leather_forge_apron_gloves_heavy_boots_tool_belt_metal_accessories_large_forging_hammer_warm_brown_and_steel_color_palette_keep_the_exact_same_character_design_in_every_framesprite_sheet_animationsidle_4_frames_walk_cycle_8_frames_hammer_attack_6_frames_forge__anvil_interaction_6_frames_combat_attack_6_frames_hurt_reaction_4_frames_death_animation_6_framesrequirements48x48_pixel_frames_transparent_background_game_ready_sprite_sheet_pixel_perfect_snesgba_style_clean_silhouette_limited_color_palette_sharp_pixel_clusters_consistent_lighting_and_proportions_compatible_with_godot_unity_2d_and_rpg_maker_character_asset_pixel_art_16bit_hd_rpg_style_high_quality_game_sprite",
+        "display_name": "Create a professional 48x48 pixel art sprite sheet of a medieval fantasy Blacksmith character for a 2D RPG game.\n\nStyle inspired by Final Fantasy, Ragnarok Online, The Legend of Zelda, Chrono Trigger and classic GBA/SNES JRPGs.\n\nCharacter design: strong blacksmith warrior, short dark hair, beard, leather forge apron, gloves, heavy boots, tool belt, metal accessories, large forging hammer, warm brown and steel color palette. Keep the exact same character design in every frame.\n\nSprite sheet animations:\nIdle (4 frames), Walk cycle (8 frames), Hammer Attack (6 frames), Forge / Anvil interaction (6 frames), Combat Attack (6 frames), Hurt reaction (4 frames), Death animation (6 frames).\n\nRequirements:\n48x48 pixel frames, transparent background, game-ready sprite sheet, pixel-perfect SNES/GBA style, clean silhouette, limited color palette, sharp pixel clusters, consistent lighting and proportions, compatible with Godot, Unity 2D and RPG Maker., character asset, pixel art, 16bit, HD RPG style, high quality, game sprite",
+        "type": "character",
+        "status": "approved"
+    },
+    {
+        "asset_id": 20,
+        "name": "create_a_professional_48x48_pixel_art_sprite_sheet_of_a_medieval_fantasy_blacksmith_character_for_a_2d_rpg_gamestyle_inspired_by_final_fantasy_ragnarok_online_the_legend_of_zelda_chrono_trigger_and_classic_gbasnes_jrpgscharacter_design_strong_blacksmith_warrior_short_dark_hair_beard_leather_forge_apron_gloves_heavy_boots_tool_belt_metal_accessories_large_forging_hammer_warm_brown_and_steel_color_palette_keep_the_exact_same_character_design_in_every_framesprite_sheet_animationsidle_4_frames_walk_cycle_8_frames_hammer_attack_6_frames_forge__anvil_interaction_6_frames_combat_attack_6_frames_hurt_reaction_4_frames_death_animation_6_framesrequirements48x48_pixel_frames_transparent_background_game_ready_sprite_sheet_pixel_perfect_snesgba_style_clean_silhouette_limited_color_palette_sharp_pixel_clusters_consistent_lighting_and_proportions_compatible_with_godot_unity_2d_and_rpg_maker_character_asset_pixel_art_16bit_hd_rpg_style_high_quality_game_sprite",
+        "display_name": "Create a professional 48x48 pixel art sprite sheet of a medieval fantasy Blacksmith character for a 2D RPG game.\n\nStyle inspired by Final Fantasy, Ragnarok Online, The Legend of Zelda, Chrono Trigger and classic GBA/SNES JRPGs.\n\nCharacter design: strong blacksmith warrior, short dark hair, beard, leather forge apron, gloves, heavy boots, tool belt, metal accessories, large forging hammer, warm brown and steel color palette. Keep the exact same character design in every frame.\n\nSprite sheet animations:\nIdle (4 frames), Walk cycle (8 frames), Hammer Attack (6 frames), Forge / Anvil interaction (6 frames), Combat Attack (6 frames), Hurt reaction (4 frames), Death animation (6 frames).\n\nRequirements:\n48x48 pixel frames, transparent background, game-ready sprite sheet, pixel-perfect SNES/GBA style, clean silhouette, limited color palette, sharp pixel clusters, consistent lighting and proportions, compatible with Godot, Unity 2D and RPG Maker., character asset, pixel art, 16bit, HD RPG style, high quality, game sprite",
+        "type": "character",
+        "status": "approved"
+    },
+    {
+        "asset_id": 21,
+        "name": "create_a_professional_48x48_pixel_art_sprite_sheet_of_a_medieval_fantasy_blacksmith_character_for_a_2d_rpg_gamestyle_inspired_by_final_fantasy_ragnarok_online_the_legend_of_zelda_chrono_trigger_and_classic_gbasnes_jrpgscharacter_design_strong_blacksmith_warrior_short_dark_hair_beard_leather_forge_apron_gloves_heavy_boots_tool_belt_metal_accessories_large_forging_hammer_warm_brown_and_steel_color_palette_keep_the_exact_same_character_design_in_every_frame_character_asset_48x48_pixel_frames_transparent_background_game_ready_sprite_sheet_pixel_perfect_snesgba_style_clean_silhouette_limited_color_palette_sharp_pixel_clusters_consistent_lighting_and_proportions_compatible_with_godot_unity_2d_and_rpg_maker_game_sprite",
+        "display_name": "Create a professional 48x48 pixel art sprite sheet of a medieval fantasy Blacksmith character for a 2D RPG game.\n\nStyle inspired by Final Fantasy, Ragnarok Online, The Legend of Zelda, Chrono Trigger and classic GBA/SNES JRPGs.\n\nCharacter design: strong blacksmith warrior, short dark hair, beard, leather forge apron, gloves, heavy boots, tool belt, metal accessories, large forging hammer, warm brown and steel color palette. Keep the exact same character design in every frame., character asset, 48x48 pixel frames, transparent background, game-ready sprite sheet, pixel-perfect SNES/GBA style, clean silhouette, limited color palette, sharp pixel clusters, consistent lighting and proportions, compatible with Godot, Unity 2D and RPG Maker., game sprite",
+        "type": "character",
+        "status": "approved"
     }
 ]

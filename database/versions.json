@@ -43,5 +43,175 @@
             "quality approval completed"
         ],
         "created_at": "2026-07-23T13:06:38.830501"
+    },
+    {
+        "asset_id": 7,
+        "version": "1.0",
+        "changes": [
+            "initial asset creation",
+            "production package generated",
+            "quality approval completed"
+        ],
+        "created_at": "2026-07-28T15:06:56.275436"
+    },
+    {
+        "asset_id": 1,
+        "version": "1.1",
+        "changes": [
+            "new attack animation",
+            "improved sprite",
+            "updated godot scene"
+        ],
+        "created_at": "2026-07-28T15:06:56.704069"
+    },
+    {
+        "asset_id": 8,
+        "version": "1.0",
+        "changes": [
+            "initial asset creation",
+            "production package generated",
+            "quality approval completed"
+        ],
+        "created_at": "2026-07-28T15:08:44.391946"
+    },
+    {
+        "asset_id": 9,
+        "version": "1.0",
+        "changes": [
+            "initial asset creation",
+            "production package generated",
+            "quality approval completed"
+        ],
+        "created_at": "2026-07-28T15:11:34.451858"
+    },
+    {
+        "asset_id": 10,
+        "version": "1.0",
+        "changes": [
+            "initial asset creation",
+            "production package generated",
+            "quality approval completed"
+        ],
+        "created_at": "2026-07-28T15:11:35.796947"
+    },
+    {
+        "asset_id": 11,
+        "version": "1.0",
+        "changes": [
+            "initial asset creation",
+            "production package generated",
+            "quality approval completed"
+        ],
+        "created_at": "2026-07-28T16:01:48.061913"
+    },
+    {
+        "asset_id": 12,
+        "version": "1.0",
+        "changes": [
+            "initial asset creation",
+            "production package generated",
+            "quality approval completed"
+        ],
+        "created_at": "2026-07-28T21:09:58.685424"
+    },
+    {
+        "asset_id": 13,
+        "version": "1.0",
+        "changes": [
+            "initial asset creation",
+            "production package generated",
+            "quality approval completed"
+        ],
+        "created_at": "2026-07-28T22:23:24.465069"
+    },
+    {
+        "asset_id": 14,
+        "version": "1.0",
+        "changes": [
+            "initial asset creation",
+            "production package generated",
+            "quality approval completed"
+        ],
+        "created_at": "2026-07-30T21:21:14.182048"
+    },
+    {
+        "asset_id": 15,
+        "version": "1.0",
+        "changes": [
+            "initial asset creation",
+            "production package generated",
+            "quality approval completed"
+        ],
+        "created_at": "2026-07-30T21:31:16.207024"
+    },
+    {
+        "asset_id": 16,
+        "version": "1.0",
+        "changes": [
+            "initial asset creation",
+            "production package generated",
+            "quality approval completed"
+        ],
+        "created_at": "2026-07-31T08:02:49.315778"
+    },
+    {
+        "asset_id": 17,
+        "version": "1.0",
+        "changes": [
+            "initial asset creation",
+            "production package generated",
+            "quality approval completed"
+        ],
+        "created_at": "2026-07-31T08:03:49.973754"
+    },
+    {
+        "asset_id": 1,
+        "version": "1.1",
+        "changes": [
+            "new attack animation",
+            "improved sprite",
+            "updated godot scene"
+        ],
+        "created_at": "2026-07-31T08:04:34.666228"
+    },
+    {
+        "asset_id": 18,
+        "version": "1.0",
+        "changes": [
+            "initial asset creation",
+            "production package generated",
+            "quality approval completed"
+        ],
+        "created_at": "2026-07-31T08:10:05.240540"
+    },
+    {
+        "asset_id": 19,
+        "version": "1.0",
+        "changes": [
+            "initial asset creation",
+            "production package generated",
+            "quality approval completed"
+        ],
+        "created_at": "2026-07-31T08:58:29.238484"
+    },
+    {
+        "asset_id": 20,
+        "version": "1.0",
+        "changes": [
+            "initial asset creation",
+            "production package generated",
+            "quality approval completed"
+        ],
+        "created_at": "2026-07-31T10:25:15.875520"
+    },
+    {
+        "asset_id": 21,
+        "version": "1.0",
+        "changes": [
+            "initial asset creation",
+            "production package generated",
+            "quality approval completed"
+        ],
+        "created_at": "2026-07-31T10:28:44.285354"
     }
 ]

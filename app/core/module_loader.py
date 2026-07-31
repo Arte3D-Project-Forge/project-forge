@@ -12,14 +12,24 @@ class ModuleLoader:
 
 
 
+    def __init__(self, registry, project=None):
+
+        self.registry = registry
+        self.project = project
+
+
     def load_modules(self):
 
 
         modules = [
 
-            DocumentsModule(),
+            DocumentsModule(
+                project_path=self.project["path"]
+            ),
 
-            ProductionModule()
+            ProductionModule(
+                project=self.project
+            )
 
         ]
 

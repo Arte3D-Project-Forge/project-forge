@@ -1,0 +1,17 @@
+Crie animações para:
+
+fire dragon
+
+Gerar:
+
+Idle
+
+Walk
+
+Attack
+
+Hit
+
+Death
+
+Separadas em Sprite Sheets.

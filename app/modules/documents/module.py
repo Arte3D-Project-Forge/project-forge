@@ -36,10 +36,12 @@ class DocumentsModule(ForgeModule):
 
 
 
-    def open(self):
+    def open(self, parent=None):
 
 
         self.window = DocumentsWindow(
+
+            parent=parent,
 
             project_path=self.project_path
 

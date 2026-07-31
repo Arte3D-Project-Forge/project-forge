@@ -1,0 +1,17 @@
+{
+    "asset": "fire_dragon",
+    "type": "sprite",
+    "provider": "openai",
+    "animations": [
+        "idle"
+    ],
+    "files": [
+        {
+            "status": "generated",
+            "provider": "openai",
+            "file": "Teste\\sprites\\fire_dragon\\idle\\fire_dragon_idle_001.png",
+            "created_at": "2026-07-28T22:23:24.395306"
+        }
+    ],
+    "created_at": "2026-07-28T22:23:24.395695"
+}

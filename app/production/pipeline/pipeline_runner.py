@@ -58,9 +58,7 @@ class PipelineRunner:
         )
 
 
-        self.sprite_worker = SpriteWorker(
-            self.provider
-        )
+        self.sprite_worker = SpriteWorker()
 
 
         self.tile_worker = TileWorker(

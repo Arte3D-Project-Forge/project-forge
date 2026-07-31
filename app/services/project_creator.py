@@ -29,6 +29,12 @@ class ProjectCreator:
 
         self.create_files(folder, project)
 
+        return {
+            "name": project.name,
+            "engine": project.engine,
+            "path": os.path.abspath(folder)
+        }
+
 
     def create_files(self, folder, project):
 

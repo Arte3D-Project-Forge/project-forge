@@ -1,0 +1,27 @@
+Create a professional RPG environment tile set.
+
+Biome:
+fire_dragon
+
+Description:
+fire dragon
+
+Style:
+HD Pixel Art
+
+Tile Size:
+32x32 pixels
+
+Requirements:
+
+- Seamless tiles
+- RPG fantasy environment
+- Godot compatible
+- Terrain variations
+- Vegetation assets
+- Water tiles
+- Environmental props
+- Consistent art direction
+
+Engine:
+Godot

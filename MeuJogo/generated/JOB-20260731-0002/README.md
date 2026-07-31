@@ -1,0 +1,60 @@
+# Project Forge Asset Package
+## Job
+
+JOB-20260731-0002
+
+---
+
+## Projeto
+
+Meu Jogo
+
+Engine:
+
+Godot
+
+---
+
+## Solicitação
+
+Create a professional 48x48 pixel art sprite sheet of a medieval fantasy Blacksmith character for a 2D RPG game.
+
+Style inspired by Final Fantasy, Ragnarok Online, The Legend of Zelda, Chrono Trigger and classic GBA/SNES JRPGs.
+
+Character design: strong blacksmith warrior, short dark hair, beard, leather forge apron, gloves, heavy boots, tool belt, metal accessories, large forging hammer, warm brown and steel color palette. Keep the exact same character design in every frame., character asset, 48x48 pixel frames, transparent background, game-ready sprite sheet, pixel-perfect SNES/GBA style, clean silhouette, limited color palette, sharp pixel clusters, consistent lighting and proportions, compatible with Godot, Unity 2D and RPG Maker., game sprite
+
+---
+
+## Tarefas
+
+- sprites
+
+---
+
+## Estrutura
+
+concept/
+lore/
+sprites/
+animations/
+tiles/
+audio/
+ui/
+godot/
+metadata/
+prompts/
+
+---
+
+## Status
+
+Status: queued
+Stage: waiting
+Progress: 0%
+Priority: normal
+
+## Gerado em
+
+31/07/2026 10:28:33
+
+Gerado automaticamente pelo Project Forge.

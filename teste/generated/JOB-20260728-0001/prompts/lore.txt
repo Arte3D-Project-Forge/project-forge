@@ -1,0 +1,22 @@
+Você é um Game Designer profissional.
+
+Projeto:
+Teste
+
+Engine:
+Godot
+
+Pedido:
+fire dragon
+
+Crie uma lore completa.
+
+Inclua:
+
+- História
+- Origem
+- Habitat
+- Personalidade
+- Habilidades
+- Fraquezas
+- Curiosidades

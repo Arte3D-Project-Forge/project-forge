@@ -2,6 +2,7 @@ import customtkinter as ctk
 import os
 
 from app.ui.document_viewer import DocumentViewer
+from app.ui.sprite_viewer import SpriteViewer
 
 from app.core.workspace_controller import WorkspaceController
 from app.core.module_registry import ModuleRegistry
@@ -22,10 +23,7 @@ class ProjectWorkspace(ctk.CTkToplevel):
         self.viewer = None
 
 
-        self.transient(parent)
-        self.grab_set()
-        self.focus_force()
-        self.lift()
+        self.after(50, self._show_on_top)
 
 
         self.title(
@@ -43,6 +41,10 @@ class ProjectWorkspace(ctk.CTkToplevel):
         self.create_ui()
 
 
+    def _show_on_top(self):
+        self.lift()
+        self.focus_force()
+
 
     # ==========================
     # MODULE SYSTEM
@@ -55,7 +57,8 @@ class ProjectWorkspace(ctk.CTkToplevel):
 
 
         self.loader = ModuleLoader(
-            self.registry
+            self.registry,
+            project=self.project
         )
 
 
@@ -122,6 +125,11 @@ class ProjectWorkspace(ctk.CTkToplevel):
         )
 
 
+        self.create_gallery_button(
+            container
+        )
+
+
 
     # ==========================
     # MODULES
@@ -171,10 +179,9 @@ class ProjectWorkspace(ctk.CTkToplevel):
 
     def open_module(self,module):
 
-
-        print(
-            "Abrindo módulo:",
-            module["name"]
+        self.controller.open_module(
+            module["id"],
+            parent=self
         )
 
 
@@ -291,3 +298,41 @@ class ProjectWorkspace(ctk.CTkToplevel):
 
 
         self.viewer.focus()
+
+
+    def create_gallery_button(self, parent):
+
+        title = ctk.CTkLabel(
+            parent,
+            text="GALERIA DE ARTE",
+            font=("Arial", 20, "bold")
+        )
+
+        title.pack(
+            pady=(30, 10)
+        )
+
+        button = ctk.CTkButton(
+            parent,
+            text="Sprite Gallery",
+            height=40,
+            fg_color="green",
+            hover_color="darkgreen",
+            command=self.open_sprite_gallery
+        )
+
+        button.pack(
+            fill="x",
+            padx=80,
+            pady=5
+        )
+
+
+    def open_sprite_gallery(self):
+
+        viewer = SpriteViewer(
+            self,
+            self.project
+        )
+
+        viewer.focus()

@@ -7,7 +7,7 @@ from app.modules.production.ui.production_window import ProductionWindow
 class ProductionModule(ForgeModule):
 
 
-    def __init__(self):
+    def __init__(self, project=None):
 
         super().__init__(
 
@@ -24,6 +24,7 @@ class ProductionModule(ForgeModule):
         )
 
 
+        self.project = project
         self.window = None
 
 
@@ -34,10 +35,13 @@ class ProductionModule(ForgeModule):
 
 
 
-    def open(self):
+    def open(self, parent=None):
 
 
-        self.window = ProductionWindow()
+        self.window = ProductionWindow(
+            parent=parent,
+            project=self.project
+        )
 
 
         self.window.focus_force()
@@ -58,7 +62,8 @@ class ProductionModule(ForgeModule):
             self.window.destroy()
 
 
-            self.window = None
+        self.project = None
+        self.window = None
 
 
 

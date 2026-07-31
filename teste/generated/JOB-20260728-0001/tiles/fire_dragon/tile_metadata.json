@@ -1,0 +1,14 @@
+{
+    "biome": "fire_dragon",
+    "type": "environment_tiles",
+    "style": "HD Pixel Art",
+    "tile_size": "32x32",
+    "engine": "Godot",
+    "categories": [
+        "terrain",
+        "vegetation",
+        "water",
+        "props"
+    ],
+    "status": "prepared"
+}

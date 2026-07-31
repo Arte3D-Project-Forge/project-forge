@@ -1,4 +1,5 @@
 import os
+import sys
 
 
 
@@ -13,10 +14,33 @@ class EnvManager:
 
     ):
 
-
-        self.env_path = env_path
+        self.env_path = self._resolve_path(
+            env_path
+        )
 
         self.load()
+
+
+    def _resolve_path(self, path):
+
+        if os.path.exists(path):
+            return path
+
+        base = getattr(
+            sys, "_MEIPASS",
+            os.path.dirname(
+                os.path.dirname(
+                    os.path.abspath(__file__)
+                )
+            )
+        )
+
+        resolved = os.path.join(base, path)
+
+        if os.path.exists(resolved):
+            return resolved
+
+        return path
 
 
 

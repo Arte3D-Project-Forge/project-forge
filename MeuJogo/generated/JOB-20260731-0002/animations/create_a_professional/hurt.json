@@ -1,0 +1,8 @@
+{
+    "animation": "hurt",
+    "frames": 3,
+    "fps": 8,
+    "loop": false,
+    "direction": "horizontal",
+    "status": "prepared"
+}

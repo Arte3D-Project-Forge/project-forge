@@ -1,0 +1,14 @@
+{
+    "asset": "fire_dragon",
+    "type": "animation_set",
+    "engine": "Godot",
+    "animations": [
+        "idle",
+        "walk",
+        "attack",
+        "hurt",
+        "death"
+    ],
+    "format": "AnimatedSprite2D Ready",
+    "status": "prepared"
+}

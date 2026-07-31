@@ -1,61 +1,64 @@
 {
     "project_forge": {
-        "version": "0.36",
-        "environment": "development"
+        "version": "1.0",
+        "environment": "production"
     },
-
     "providers": {
-
         "image": {
-
-            "active": "openai",
-
+            "active": "pollinations",
             "available": [
-
                 "mock",
-
                 "openai",
-
-                "comfyui"
-
+                "comfyui",
+                "pollinations",
+                "huggingface"
             ]
-
         },
-
         "audio": {
-
             "active": "mock"
-
         },
-
         "text": {
-
             "active": "mock"
-
+        },
+        "huggingface": {
+            "api_token": "",
+            "model": "black-forest-labs/FLUX.1-schnell"
         }
-
     },
-
-
+    "comfyui": {
+        "server_url": "http://127.0.0.1:8188",
+        "colab_url": "https://colab.research.google.com/github/Arte3D-Project-Forge/project-forge/blob/main/colab/ComfyUI_Forge_Notebook.ipynb",
+        "default_model": "dreamshaper_8.safetensors",
+        "steps": 28,
+        "cfg": 7,
+        "sampler": "dpmpp_2m",
+        "scheduler": "karras",
+        "workflow": "config/workflows/comfyui_sprite_workflow.json",
+        "upscale_workflow": "config/workflows/comfyui_sprite_upscale_workflow.json",
+        "upscale_model": "RealESRGAN_x4plus.pth",
+        "positive_suffix": "high quality, masterpiece, sharp details, clean lines, single subject, centered, full body, best quality",
+        "negative_prompt": "blurry, low quality, deformed, distorted, ugly, bad anatomy, watermark, text, logo, signature, realistic photo, 3d render, multiple subjects, cropped, out of frame, extra limbs, jpeg artifacts, noise, duplicate, monochrome"
+    },
     "generation": {
-
-        "default_resolution": "48x48",
-
+        "default_resolution": "512x512",
         "pixel_art": true,
-
         "style": "HD Pixel Art RPG",
-
-        "transparent_background": true
-
+        "transparent_background": true,
+        "style_suffix": "pixel art, game asset, 16bit, rpg style, high quality, detailed, sharp pixels"
     },
-
-
+    "assets": {
+        "categories": [
+            "characters",
+            "mobs",
+            "pets",
+            "items",
+            "tiles",
+            "dungeons",
+            "effects"
+        ]
+    },
     "paths": {
-
         "database": "database",
-
         "generated": "generated"
-
     }
-
 }

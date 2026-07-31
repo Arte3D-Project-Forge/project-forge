@@ -15,10 +15,16 @@ class WorkspaceController:
         return self.registry.modules.values()
 
 
+    def get_available_modules(self):
+
+        return self.registry.get_all_modules()
+
+
 
     def open_module(
         self,
-        module_id
+        module_id,
+        parent=None
     ):
 
 
@@ -33,7 +39,7 @@ class WorkspaceController:
 
 
 
-        return module.open()
+        return module.open(parent=parent)
 
 
 
