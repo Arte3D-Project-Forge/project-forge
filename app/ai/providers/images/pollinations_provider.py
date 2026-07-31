@@ -18,7 +18,10 @@ class PollinationsProvider(ImageProvider):
             "default_resolution", "512x512"
         ).lower().split("x")
 
-        self.model = "flux"
+        self.model = generation.get(
+            "image_model",
+            "imagegen3"
+        )
         self.timeout = 180
         self.width = int(resolution[0])
         self.height = int(resolution[1])

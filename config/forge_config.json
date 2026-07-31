@@ -27,7 +27,7 @@
     },
     "comfyui": {
         "server_url": "http://127.0.0.1:8188",
-        "sync_url": "",
+        "sync_url": "https://jsonblob.com/api/jsonBlob/019fb890-6c80-7896-88e3-14ac5bf3ca7c",
         "colab_url": "https://colab.research.google.com/github/Arte3D-Project-Forge/project-forge/blob/main/colab/ComfyUI_Forge_Notebook.ipynb",
         "default_model": "dreamshaper_8.safetensors",
         "steps": 28,
@@ -42,6 +42,7 @@
     },
     "generation": {
         "default_resolution": "512x512",
+        "image_model": "imagegen3",
         "pixel_art": true,
         "style": "HD Pixel Art RPG",
         "transparent_background": true,

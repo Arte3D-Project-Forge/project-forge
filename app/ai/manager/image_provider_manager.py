@@ -29,22 +29,41 @@ class ImageProviderManager:
         return PollinationsProvider()
 
     def comfyui_available(self, timeout=3):
+        import time as _time
+
+        comfyui_cfg = self.config.config.get("comfyui", {})
+        base_url = comfyui_cfg.get(
+            "server_url",
+            "http://127.0.0.1:8188"
+        ).rstrip("/")
+
+        now = _time.time()
+        cached = getattr(self, "_comfyui_cache", None)
+        if (
+            cached
+            and cached["url"] == base_url
+            and now - cached["at"] < 60
+        ):
+            return cached["ok"]
+
         try:
             import urllib.request
-
-            comfyui_cfg = self.config.config.get("comfyui", {})
-            base_url = comfyui_cfg.get(
-                "server_url",
-                "http://127.0.0.1:8188"
-            ).rstrip("/")
 
             req = urllib.request.Request(
                 f"{base_url}/system_stats"
             )
             urllib.request.urlopen(req, timeout=timeout)
-            return True
+            ok = True
         except Exception:
-            return False
+            ok = False
+
+        self._comfyui_cache = {
+            "url": base_url,
+            "ok": ok,
+            "at": now
+        }
+
+        return ok
 
     def _comfyui_explicit(self):
         server_url = (

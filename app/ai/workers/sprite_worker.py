@@ -55,6 +55,8 @@ class SpriteWorker:
                     f"{result.get('message', 'erro desconhecido')}"
                 )
 
+            result = self._apply_transparency(result)
+
             generated_files.append(result)
 
         metadata = {

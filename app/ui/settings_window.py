@@ -23,7 +23,7 @@ class SettingsWindow(ctk.CTkToplevel):
         )
 
         self.title("Configurações")
-        self.geometry("560x420")
+        self.geometry("620x700")
 
         self.lift()
         self.focus_force()
@@ -168,8 +168,8 @@ class SettingsWindow(ctk.CTkToplevel):
         self.sync_status = ctk.CTkLabel(
             sync_frame,
             text=(
-                "Cole este link na célula 'Túnel automático' do Colab. "
-                "Depois disso, o Forge descobre a URL sozinho."
+                "Já configurado automaticamente. Quando o notebook do "
+                "Colab estiver rodando, o Forge descobre a URL sozinho."
             ),
             font=("Arial", 11),
             text_color="gray",
