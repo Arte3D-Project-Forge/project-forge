@@ -5,7 +5,7 @@
     },
     "providers": {
         "image": {
-            "active": "spritecook",
+            "active": "gemini",
             "available": [
                 "mock",
                 "openai",
@@ -13,7 +13,8 @@
                 "pollinations",
                 "huggingface",
                 "stablehorde",
-                "spritecook"
+                "spritecook",
+                "gemini"
             ]
         },
         "audio": {
@@ -42,6 +43,11 @@
             "theme": "fantasy RPG, pixel art",
             "colors": [],
             "variations": 4
+        },
+        "gemini": {
+            "api_key": "",
+            "model": "gemini-2.5-flash-image",
+            "steps": 28
         }
     },
     "comfyui": {
@@ -92,5 +98,8 @@
     "paths": {
         "database": "database",
         "generated": "generated"
+    },
+    "gemini": {
+        "api_key": ""
     }
 }

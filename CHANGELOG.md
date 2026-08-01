@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.4.1 (01/08/2026)
+
+### Novo: Provider Gemini (Nano Banana) — pixel art GRÁTIS sem GPU
+- **Integração com a Gemini API** (`gemini_image_provider.py`): modelo
+  `gemini-2.5-flash-image` (Nano Banana) no **tier gratuito** (~10
+  imagens/dia, sem cartão).
+- **Sem GPU, sem túnel, sem Colab** — chamada REST direta do Forge,
+  imagem retornada em base64.
+- Prompt mestre Studio Pro + sufixo pixel art injetado automaticamente.
+- Campo **Gemini API key** na tela de Configurações + hint.
+- Registrado no manager, na cadeia de fallback e no seletor da UI.
+- Chave via `config/.env` (GEMINI_API_KEY) — nunca versionada.
+- Exe recompilado.
+
+### Fix: Provider SpriteCook
+- Modelo padrão trocado para `gemini-3.1-flash-lite-image` (8 créditos,
+  vs 12 do flash-image).
+- `quality` removido do payload quando o modelo não suporta (corrige 422).
+- Chave movida para `config/.env` (segurança).
+
 ## 0.4.0 (01/08/2026)
 
 ### Novo: Provider SpriteCook — pixel art profissional com API

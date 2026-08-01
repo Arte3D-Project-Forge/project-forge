@@ -129,6 +129,7 @@ class SettingsView(ForgeView):
             "huggingface": "Grátis, requer token opcional",
             "openai": "Requer API key",
             "spritecook": "Pixel art profissional (40 créditos/mês grátis)",
+            "gemini": "Grátis ~10 img/dia (Nano Banana, sem GPU)",
             "mock": "Teste (quadrado colorido)",
         }
         self.provider_hint_label = ctk.CTkLabel(
@@ -179,6 +180,47 @@ class SettingsView(ForgeView):
             justify="left",
         )
         sc_hint.pack(padx=15, pady=(0, 10), anchor="w")
+
+        # ---- Gemini (API key) ----
+        gemini_row = ctk.CTkFrame(gen_frame, fg_color="transparent")
+        gemini_row.pack(padx=15, pady=(0, 12), fill="x")
+
+        ctk.CTkLabel(
+            gemini_row,
+            text="Gemini API key:",
+            font=font(12, "bold"),
+            text_color=TEXT,
+        ).pack(side="left")
+
+        gemini_cfg = self.config.config.get("gemini", {})
+        self.gemini_key_var = ctk.StringVar(
+            value=gemini_cfg.get("api_key", "")
+        )
+        self.gemini_key_entry = ctk.CTkEntry(
+            gemini_row,
+            textvariable=self.gemini_key_var,
+            width=240,
+            fg_color=BG,
+            border_width=0,
+            text_color=TEXT,
+            font=font(12),
+        )
+        self.gemini_key_entry.pack(side="left", padx=8)
+        self.gemini_key_var.trace_add("write", self._on_gemini_key_change)
+
+        gemini_hint = ctk.CTkLabel(
+            gen_frame,
+            text=(
+                "Chave grátis em aistudio.google.com/apikey — modelo "
+                "Nano Banana (gemini-2.5-flash-image), ~10 imagens/dia "
+                "sem GPU nem túnel."
+            ),
+            font=font(11),
+            text_color=MUTED,
+            wraplength=620,
+            justify="left",
+        )
+        gemini_hint.pack(padx=15, pady=(0, 10), anchor="w")
 
         # ---- ComfyUI (avançado) ----
         comfy_frame = ctk.CTkFrame(body, fg_color=CARD_BG, corner_radius=12)
@@ -318,11 +360,16 @@ class SettingsView(ForgeView):
             "huggingface": "Grátis, requer token opcional",
             "openai": "Requer API key",
             "spritecook": "Pixel art profissional (40 créditos/mês grátis)",
+            "gemini": "Grátis ~10 img/dia (Nano Banana, sem GPU)",
             "mock": "Teste (quadrado colorido)",
         }
         self.provider_hint_label.configure(
             text=hints.get(name, "")
         )
+
+    def _on_gemini_key_change(self, *args):
+        key = self.gemini_key_entry.get().strip()
+        self.config.set("gemini", "api_key", key)
 
     def _on_sc_key_change(self, *args):
         key = self.sc_key_entry.get().strip()
