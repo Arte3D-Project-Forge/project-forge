@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.4.0 (01/08/2026)
+
+### Novo: Provider SpriteCook — pixel art profissional com API
+- **Provider SpriteCook integrado** (`spritecook_provider.py`): geração de
+  sprites pixel art em grid com fundo transparente **nativo**, paleta de
+  cores e consistência.
+- **40 créditos grátis por mês** (~5 sprites) para validar a qualidade
+  antes de pagar (US$8/mês = 800 créditos ≈ 100 sprites).
+- Parametrização completa: `pixel`, `pixel_perfect`, `bg_mode`,
+  `resolution`, `quality`, `theme`, `colors`, `variations`.
+- Campo de **API key na tela de Configurações** + hint por provider.
+- Registrado no manager, na cadeia de fallback e no seletor da UI.
+- Exe recompilado.
+
+### Diagnóstico: Stable Horde não é ideal para pixel art
+- Testes reais: "AIO Pixel Art" gera qualidade inconsistente (é SD 1.5,
+  CFG 5.5 do SDXL não se aplica bem). Os bons modelos do Horde são
+  anime/realista, não pixel art.
+- Conclusão documentada: para pixel art de qualidade, usar Colab+SDXL,
+  ComfyUI local ou SpriteCook. Stable Horde fica como fallback grátis.
+
 ## 0.3.1 (01/08/2026)
 
 ### Novo: Workflow Studio Pro v1 — qualidade nível estúdio

@@ -5,14 +5,15 @@
     },
     "providers": {
         "image": {
-            "active": "pollinations",
+            "active": "spritecook",
             "available": [
                 "mock",
                 "openai",
                 "comfyui",
                 "pollinations",
                 "huggingface",
-                "stablehorde"
+                "stablehorde",
+                "spritecook"
             ]
         },
         "audio": {
@@ -29,6 +30,18 @@
         "stablehorde": {
             "api_key": "",
             "model": "AIO Pixel Art"
+        },
+        "spritecook": {
+            "api_key": "",
+            "model": "gemini-3.1-flash-image",
+            "resolution": "1K",
+            "quality": "medium",
+            "pixel": true,
+            "pixel_perfect": true,
+            "bg_mode": "transparent",
+            "theme": "fantasy RPG, pixel art",
+            "colors": [],
+            "variations": 4
         }
     },
     "comfyui": {

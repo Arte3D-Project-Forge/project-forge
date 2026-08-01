@@ -6,6 +6,7 @@ from app.ai.providers.images.comfyui_provider import ComfyUIProvider
 from app.ai.providers.images.pollinations_provider import PollinationsProvider
 from app.ai.providers.images.huggingface_provider import HuggingFaceProvider
 from app.ai.providers.images.stable_horde_provider import StableHordeProvider
+from app.ai.providers.images.spritecook_provider import SpriteCookProvider
 
 
 class ImageProviderManager:
@@ -27,6 +28,8 @@ class ImageProviderManager:
             return HuggingFaceProvider()
         if name == "stablehorde":
             return StableHordeProvider()
+        if name == "spritecook":
+            return SpriteCookProvider()
         if name == "mock":
             return MockImageProvider()
         return PollinationsProvider()
@@ -117,7 +120,7 @@ class ImageProviderManager:
             import json
 
             providers_to_try = [
-                "pollinations", "huggingface", "stablehorde"
+                "pollinations", "huggingface", "stablehorde", "spritecook"
             ]
             if self.provider_name not in providers_to_try:
                 providers_to_try.insert(0, self.provider_name)

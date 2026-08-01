@@ -128,6 +128,7 @@ class SettingsView(ForgeView):
             "pollinations": "Grátis, rápido, bom para testes",
             "huggingface": "Grátis, requer token opcional",
             "openai": "Requer API key",
+            "spritecook": "Pixel art profissional (40 créditos/mês grátis)",
             "mock": "Teste (quadrado colorido)",
         }
         self.provider_hint_label = ctk.CTkLabel(
@@ -137,6 +138,47 @@ class SettingsView(ForgeView):
             text_color=MUTED,
         )
         self.provider_hint_label.pack(padx=15, pady=(0, 10), anchor="w")
+
+        # ---- SpriteCook (API key) ----
+        sc_row = ctk.CTkFrame(gen_frame, fg_color="transparent")
+        sc_row.pack(padx=15, pady=(0, 12), fill="x")
+
+        ctk.CTkLabel(
+            sc_row,
+            text="SpriteCook API key:",
+            font=font(12, "bold"),
+            text_color=TEXT,
+        ).pack(side="left")
+
+        spritecook_cfg = self.config.config.get("spritecook", {})
+        self.sc_key_var = ctk.StringVar(
+            value=spritecook_cfg.get("api_key", "")
+        )
+        self.sc_key_entry = ctk.CTkEntry(
+            sc_row,
+            textvariable=self.sc_key_var,
+            width=240,
+            fg_color=BG,
+            border_width=0,
+            text_color=TEXT,
+            font=font(12),
+        )
+        self.sc_key_entry.pack(side="left", padx=8)
+        self.sc_key_var.trace_add("write", self._on_sc_key_change)
+
+        sc_hint = ctk.CTkLabel(
+            gen_frame,
+            text=(
+                "Pegue sua chave grátis em spritecook.ai → Dashboard → "
+                "API keys (40 créditos/mês, ~8 por sprite). "
+                "Pixel art real, fundo transparente nativo."
+            ),
+            font=font(11),
+            text_color=MUTED,
+            wraplength=620,
+            justify="left",
+        )
+        sc_hint.pack(padx=15, pady=(0, 10), anchor="w")
 
         # ---- ComfyUI (avançado) ----
         comfy_frame = ctk.CTkFrame(body, fg_color=CARD_BG, corner_radius=12)
@@ -269,18 +311,25 @@ class SettingsView(ForgeView):
         image_cfg = self.config.config.get("providers", {}).get("image", {})
         image_cfg["active"] = name
         self.config.set("providers", "image", image_cfg)
-
         hints = {
             "comfyui": "Qualidade máxima (Colab + túnel)",
             "stablehorde": "Grátis, rede distribuída (AIO Pixel Art)",
             "pollinations": "Grátis, rápido, bom para testes",
             "huggingface": "Grátis, requer token opcional",
             "openai": "Requer API key",
+            "spritecook": "Pixel art profissional (40 créditos/mês grátis)",
             "mock": "Teste (quadrado colorido)",
         }
         self.provider_hint_label.configure(
             text=hints.get(name, "")
         )
+
+    def _on_sc_key_change(self, *args):
+        key = self.sc_key_entry.get().strip()
+
+        spritecook_cfg = self.config.config.get("spritecook", {})
+        spritecook_cfg["api_key"] = key
+        self.config.set("spritecook", "api_key", key)
 
     def _on_url_change(self, *args):
         url = self.url_entry.get().strip().rstrip("/")
