@@ -5,6 +5,7 @@ from app.ai.providers.images.openai_image_provider import OpenAIImageProvider
 from app.ai.providers.images.comfyui_provider import ComfyUIProvider
 from app.ai.providers.images.pollinations_provider import PollinationsProvider
 from app.ai.providers.images.huggingface_provider import HuggingFaceProvider
+from app.ai.providers.images.stable_horde_provider import StableHordeProvider
 
 
 class ImageProviderManager:
@@ -24,6 +25,8 @@ class ImageProviderManager:
             return PollinationsProvider()
         if name == "huggingface":
             return HuggingFaceProvider()
+        if name == "stablehorde":
+            return StableHordeProvider()
         if name == "mock":
             return MockImageProvider()
         return PollinationsProvider()
@@ -99,7 +102,11 @@ class ImageProviderManager:
                 return comfy_result
 
             if comfyui_explicit:
-                return comfy_result
+                # ComfyUI remoto falhou (ex.: tunel morto).
+                # Em vez de erro, cai para a cadeia de fallback gratis.
+                self._log(
+                    "ComfyUI remoto falhou; tentando fallback..."
+                )
 
         result = self.primary_provider.generate(
             prompt, filename, output_path
@@ -109,7 +116,9 @@ class ImageProviderManager:
             import os
             import json
 
-            providers_to_try = ["pollinations", "huggingface"]
+            providers_to_try = [
+                "pollinations", "huggingface", "stablehorde"
+            ]
             if self.provider_name not in providers_to_try:
                 providers_to_try.insert(0, self.provider_name)
 

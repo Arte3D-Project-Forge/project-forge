@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.3.0 (01/08/2026)
+
+### Novo: Stable Horde — geracao de sprites GRATIS sem Colab
+- **Provider Stable Horde (AI Horde) integrado** — rede distribuida de GPUs
+  comunitarias, 100% gratis, sem login (chave anonima), sem limite de GPU.
+- Modelo **"AIO Pixel Art"** disponivel (pixel art dedicado) — ideal para
+  o estilo Aetherva (Zelda/FF/Sea of Stars).
+- **Seletor de gerador na UI de Configuracoes** — menu dropdown para trocar
+  entre ComfyUI / Stable Horde / Pollinations / HuggingFace / OpenAI.
+- Provider decodifica URL de imagem (API Horde retorna URL, nao base64).
+- Auto-fallback em 512x512 se 1024 exigir kudos anonimo.
+- **Bug #1 corrigido**: ComfyUI remoto morto nao returningEarly; agora cai
+  para a cadeia de fallback (Stable Horde incluido) em vez de erro.
+- Teste real: Tola gerada em 63s via Stable Horde, 0 custo.
+- Exe recompilado.
+
 ## 0.2.1 (01/08/2026)
 
 ### Protótipo Aetherva — captura e pets funcionais

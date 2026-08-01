@@ -78,14 +78,65 @@ class SettingsView(ForgeView):
             gen_frame,
             text=(
                 "O Forge escolhe o melhor gerador automaticamente:\n"
-                "ComfyUI (se detectado) → Pollinations → HuggingFace.\n"
+                "ComfyUI (se detectado) → Pollinations → Stable Horde.\n"
                 "Nenhuma configuração é necessária para funcionar."
             ),
             font=font(12),
             text_color=MUTED,
             justify="left",
         )
-        info.pack(padx=15, pady=(0, 12), anchor="w")
+        info.pack(padx=15, pady=(0, 8), anchor="w")
+
+        # ---- Seletor de provider ativo ----
+        provider_row = ctk.CTkFrame(gen_frame, fg_color="transparent")
+        provider_row.pack(padx=15, pady=(0, 6), fill="x")
+
+        ctk.CTkLabel(
+            provider_row,
+            text="Gerador ativo:",
+            font=font(12, "bold"),
+            text_color=TEXT,
+        ).pack(side="left")
+
+        self.provider_var = ctk.StringVar(
+            value=self.config.get_image_provider()
+        )
+        provider_options = self.config.config.get(
+            "providers", {}
+        ).get("image", {}).get("available", [
+            "mock", "openai", "comfyui", "pollinations",
+            "huggingface", "stablehorde",
+        ])
+
+        self.provider_menu = ctk.CTkOptionMenu(
+            provider_row,
+            values=provider_options,
+            variable=self.provider_var,
+            width=190,
+            fg_color=BG,
+            button_color=ACCENT,
+            button_hover_color=ACCENT_HOVER,
+            font=font(12),
+            dropdown_font=font(12),
+            command=self._on_provider_change,
+        )
+        self.provider_menu.pack(side="left", padx=10)
+
+        provider_hint = {
+            "comfyui": "Qualidade máxima (Colab + túnel)",
+            "stablehorde": "Grátis, rede distribuída (AIO Pixel Art)",
+            "pollinations": "Grátis, rápido, bom para testes",
+            "huggingface": "Grátis, requer token opcional",
+            "openai": "Requer API key",
+            "mock": "Teste (quadrado colorido)",
+        }
+        self.provider_hint_label = ctk.CTkLabel(
+            gen_frame,
+            text=provider_hint.get(self.provider_var.get(), ""),
+            font=font(11),
+            text_color=MUTED,
+        )
+        self.provider_hint_label.pack(padx=15, pady=(0, 10), anchor="w")
 
         # ---- ComfyUI (avançado) ----
         comfy_frame = ctk.CTkFrame(body, fg_color=CARD_BG, corner_radius=12)
@@ -213,6 +264,23 @@ class SettingsView(ForgeView):
     # ==========================
     # AÇÕES
     # ==========================
+
+    def _on_provider_change(self, name):
+        image_cfg = self.config.config.get("providers", {}).get("image", {})
+        image_cfg["active"] = name
+        self.config.set("providers", "image", image_cfg)
+
+        hints = {
+            "comfyui": "Qualidade máxima (Colab + túnel)",
+            "stablehorde": "Grátis, rede distribuída (AIO Pixel Art)",
+            "pollinations": "Grátis, rápido, bom para testes",
+            "huggingface": "Grátis, requer token opcional",
+            "openai": "Requer API key",
+            "mock": "Teste (quadrado colorido)",
+        }
+        self.provider_hint_label.configure(
+            text=hints.get(name, "")
+        )
 
     def _on_url_change(self, *args):
         url = self.url_entry.get().strip().rstrip("/")

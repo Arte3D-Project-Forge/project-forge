@@ -11,7 +11,8 @@
                 "openai",
                 "comfyui",
                 "pollinations",
-                "huggingface"
+                "huggingface",
+                "stablehorde"
             ]
         },
         "audio": {
@@ -24,7 +25,11 @@
             "api_token": "",
             "model": "black-forest-labs/FLUX.1-schnell"
         },
-        "active": "comfyui"
+        "active": "comfyui",
+        "stablehorde": {
+            "api_key": "",
+            "model": "AIO Pixel Art"
+        }
     },
     "comfyui": {
         "server_url": "https://visits-liberal-organisation-knee.trycloudflare.com",
