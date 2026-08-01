@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.1 (01/08/2026)
+
+### Protótipo Aetherva — captura e pets funcionais
+- Exe do Forge recompilado com o preset **"Aetherva (Zelda/FF/Sea)"**.
+- `enemy_base.gd`/`.tscn`: AI de perseguição, HP, dano, `enraged()`, loot.
+- Captura real: tecla **C** usa cristal e chama `CaptureSystem` (fórmula validada:
+  56/100 em HP 20%, cristal raro captura em HP 5%).
+- Sucesso → pet adicionado (`PetSystem`) + pet ativo **segue o jogador** (`pet_base.gd`).
+- Bug corrigido: `enemy.has()` inexistente em Node → `get()` com null-check.
+- Teste de captura automatizado rodado na Godot 4.7.1 (zero erros).
+
 ## 0.2.0 (31/07/2026)
 
 ### Novo: Jogo Aetherva (Godot) — pré-produção completa

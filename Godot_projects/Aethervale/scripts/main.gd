@@ -5,11 +5,13 @@ extends Node
 
 const PlayerScene := preload("res://scenes/player/player.tscn")
 const EnemyScene := preload("res://scenes/enemies/enemy_base.tscn")
+const PetScene := preload("res://scenes/pets/pet_base.tscn")
 
 @onready var player: CharacterBody2D = $Player
 @onready var debug_label: Label = $DebugLabel
 
 var is_playing := true
+var _current_pet: Node2D = null
 
 
 func _ready() -> void:
@@ -33,7 +35,18 @@ func _spawn_test_enemies() -> void:
 func _on_capture_success(monster_id: String) -> void:
 	PetSystem.add_pet(monster_id)
 	InventorySystem.add_essence("essencia_%s" % monster_id, 1)
+	_spawn_pet(monster_id)
 	_update_debug()
+
+
+func _spawn_pet(monster_id: String) -> void:
+	if _current_pet != null and is_instance_valid(_current_pet):
+		_current_pet.queue_free()
+	var pet := PetScene.instantiate()
+	pet.pet_id = monster_id
+	pet.position = player.global_position + Vector2(20, 0)
+	add_child(pet)
+	_current_pet = pet
 
 
 func _on_capture_failed(_monster_id: String) -> void:

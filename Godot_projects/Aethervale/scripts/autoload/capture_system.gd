@@ -25,7 +25,9 @@ func try_capture(enemy: Node, crystal_rarity: String = "common") -> bool:
 
 	var base_capture: float = enemy.base_capture
 	var hp_frac: float = float(enemy.hp) / float(enemy.hp_max) if enemy.hp_max > 0 else 1.0
-	var vinculo: float = enemy.capture_vinculo if enemy.has("capture_vinculo") else 1.0
+	var vinculo := 1.0
+	if enemy.get("capture_vinculo") != null:
+		vinculo = enemy.capture_vinculo
 
 	var status_bonus := 1.0
 	if enemy.has_method("has_status") and enemy.has_status():

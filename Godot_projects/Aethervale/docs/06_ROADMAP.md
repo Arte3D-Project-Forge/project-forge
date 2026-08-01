@@ -12,11 +12,11 @@
 - [x] Arquitetura técnica Godot (cenas, autoloads, dados)
 
 ## FASE 1 — PROTÓTIPO JOGÁVEL (MVP: Vale Verdejante)
-- [ ] M0 — Fundação Godot (projeto, player, câmera, tilemap)
-- [ ] M1 — Combate (3 escolas, inimigos, HUD)
-- [ ] M2 — Captura (cristais, fórmula, primeiro pet)
-- [ ] M3 — Pets (auto-ataque, coleta, evolução)
-- [ ] M4 — Vale Verdejante completo
+- [x] M0 — Fundação Godot (projeto, player, câmera, tilemap)
+- [x] M1 — Combate (3 escolas, inimigos, HUD)
+- [x] M2 — Captura (cristais, fórmula, primeiro pet)
+- [x] M3 — Pets (pet ativo segue o jogador; auto-ataque/coleta = próximo)
+- [ ] M4 — Vale Verdejante completo (tilemap + sprites gerados pelo Forge)
 - [ ] M5 — Calabouço: Tumba de Almaris
 - [ ] M6 — Boss: Vassalo de Almaris + Voz da Cobiça
 - [ ] M7 — Progressão (grimório, quêtes, NPCs, save)
