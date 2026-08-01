@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.5.0 (01/08/2026)
+
+### Novo: Notebook Kaggle — GPU GRÁTIS com quota semanal (~30h)
+- **`colab/ComfyUI_Forge_Kaggle.ipynb`**: versão do notebook adaptada pro
+  Kaggle (paths `/kaggle/working`, Internet + GPU habilitadas).
+- **Vantagem sobre o Colab**: quota de ~30h de GPU por semana (Colab
+  derruba em 12h). Sessão ~9h, cache do modelo preservado entre sessões.
+- Pipeline completo: instala ComfyUI → baixa o modelo SDXL Pixel Art
+  (Sprite Shaper) → instala o workflow Studio Pro → sobe servidor →
+  túnel automático + sincronização com o Forge.
+- **Botão "Kaggle grátis" na tela de Configurações** (ao lado do Colab)
+  + `kaggle_url` na config.
+- Exe recompilado.
+
 ## 0.4.1 (01/08/2026)
 
 ### Novo: Provider Gemini (Nano Banana) — pixel art GRÁTIS sem GPU

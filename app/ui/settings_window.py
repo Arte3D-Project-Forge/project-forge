@@ -270,15 +270,28 @@ class SettingsView(ForgeView):
         )
         self.status.pack(pady=(0, 4))
 
+        btn_row = ctk.CTkFrame(comfy_frame, fg_color="transparent")
+        btn_row.pack(pady=(0, 14), padx=15)
+
         colab = ctk.CTkButton(
-            comfy_frame,
-            text="🎓 Como gerar de graça com qualidade máxima (notebook Colab)",
+            btn_row,
+            text="🎓 Notebook Colab",
             corner_radius=8,
             fg_color=ACCENT,
             hover_color=ACCENT_HOVER,
             command=self.open_colab,
         )
-        colab.pack(pady=(0, 14), padx=15)
+        colab.pack(side="left", padx=(0, 8))
+
+        kaggle = ctk.CTkButton(
+            btn_row,
+            text="🐼 Kaggle grátis (~30h GPU/semana)",
+            corner_radius=8,
+            fg_color=CARD_BG,
+            hover_color=CARD_HOVER,
+            command=self.open_kaggle,
+        )
+        kaggle.pack(side="left")
 
         # ---- Sincronização automática ----
         sync_frame = ctk.CTkFrame(body, fg_color=CARD_BG, corner_radius=12)
@@ -460,6 +473,27 @@ class SettingsView(ForgeView):
             text=(
                 "Notebook aberto. Depois de gerar a URL do túnel, "
                 "cole-a no campo acima e clique em Testar."
+            ),
+            text_color="white",
+        )
+
+    def open_kaggle(self):
+        url = (
+            self.config.config
+            .get("comfyui", {})
+            .get(
+                "kaggle_url",
+                "https://www.kaggle.com/notebooks",
+            )
+        )
+
+        webbrowser.open(url)
+
+        self.status.configure(
+            text=(
+                "Kaggle aberto. Crie um notebook, ative Internet + GPU, "
+                "cole o conteúdo de colab/ComfyUI_Forge_Kaggle.ipynb e "
+                "rode. O Forge descobre a URL do túnel sozinho."
             ),
             text_color="white",
         )

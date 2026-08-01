@@ -54,6 +54,7 @@
         "server_url": "https://visits-liberal-organisation-knee.trycloudflare.com",
         "sync_url": "https://jsonblob.com/api/jsonBlob/019fb890-6c80-7896-88e3-14ac5bf3ca7c",
         "colab_url": "https://colab.research.google.com/github/Arte3D-Project-Forge/project-forge/blob/main/colab/ComfyUI_Forge_Notebook.ipynb",
+        "kaggle_url": "https://www.kaggle.com/notebooks",
         "default_model": "pixelArtDiffusionXL_spriteShaper.safetensors",
         "steps": 28,
         "cfg": 5.5,
