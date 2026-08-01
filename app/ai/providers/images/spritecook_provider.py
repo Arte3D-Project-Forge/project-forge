@@ -22,11 +22,13 @@ class SpriteCookProvider(ImageProvider):
     """
 
     API_BASE = "https://api.spritecook.ai/v1/api"
-    DEFAULT_MODEL = "gemini-3.1-flash-image"
+    DEFAULT_MODEL = "gemini-3.1-flash-lite-image"
 
     def __init__(self):
         from app.core.config_manager import ConfigManager
+        from app.core.env_manager import EnvManager
 
+        EnvManager().load()
         config = ConfigManager()
         cfg = config.config.get("spritecook", {})
         generation = config.config.get("generation", {})
@@ -55,6 +57,14 @@ class SpriteCookProvider(ImageProvider):
             follow_redirects=True,
             verify=False,
         )
+
+        # Modelos que NAO suportam o parametro quality
+        self._quality_unsupported = {
+            "gemini-3.1-flash-image",
+            "gemini-3.1-flash-lite-image",
+            "gemini-3-pro-image",
+            "gemini-2.5-flash-image",
+        }
 
     def is_configured(self):
         return bool(self.api_key)
@@ -91,8 +101,9 @@ class SpriteCookProvider(ImageProvider):
                 "bg_mode": self.bg_mode,
                 "model": self.model,
                 "resolution": self.resolution,
-                "quality": self.quality,
             }
+            if self.model not in self._quality_unsupported:
+                payload["quality"] = self.quality
             if self.theme:
                 payload["theme"] = self.theme
             if self.colors:
