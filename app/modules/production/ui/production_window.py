@@ -3,6 +3,7 @@ import customtkinter as ctk
 from tkinter import messagebox
 
 from app.core.config_manager import ConfigManager
+from app.modules.production.category_specs import game_size_for, target_label
 from app.production.production_job import ProductionJob
 from app.production.pipeline.pipeline_runner import PipelineRunner
 from app.ui.forge_view import (
@@ -36,6 +37,17 @@ ANIMATIONS = [
 ]
 
 STYLE_PRESETS = [
+    (
+        "Studio Pro",
+        "professional indie RPG sprite, masterpiece, best quality, unified "
+        "cohesive pixel art style inspired by Ragnarok Online, Zelda Link to "
+        "the Past, Final Fantasy VI and Digimon, vibrant harmonious fantasy "
+        "color palette with deep greens, warm browns, bright blues/purples "
+        "and golden accents, clean sharp pixel lines, perfect subtle "
+        "dithering, soft cel-shading, consistent art direction across all "
+        "assets, transparent background, game-ready asset",
+        "single subject, centered, full body",
+    ),
     (
         "Aetherva (Zelda/FF/Sea)",
         "HD 2D pixel art, Zelda style, Final Fantasy inspired, Sea of Stars "
@@ -220,6 +232,36 @@ class ProductionView(ForgeView):
             or "1024x1024"
         )
 
+        self.category_hint = ctk.CTkLabel(
+            row1,
+            text="",
+            font=font(11),
+            text_color=MUTED,
+        )
+        self.category_hint.pack(side="left", padx=(12, 0))
+        self.category_box.bind(
+            "<<ComboboxSelected>>",
+            lambda e: self.update_category_hint(),
+        )
+        self.update_category_hint()
+
+        ctk.CTkLabel(row1, text="Variações:", font=font(13), text_color=TEXT).pack(
+            side="left", padx=(24, 8)
+        )
+        self.variations_box = ctk.CTkComboBox(
+            row1,
+            values=["1", "2", "4"],
+            width=70,
+            state="readonly",
+            font=font(13),
+            button_color=ACCENT,
+            button_hover_color="#6d28d9",
+        )
+        self.variations_box.pack(side="left")
+        self.variations_box.set(
+            str(self.config.get("comfyui", "batch_size") or 4)
+        )
+
         # Presets de animação (chips)
         ctk.CTkLabel(
             config_frame,
@@ -374,6 +416,16 @@ class ProductionView(ForgeView):
                 text_color="green",
             )
 
+    def update_category_hint(self):
+        category = self.category_box.get()
+        self.category_hint.configure(
+            text=f"→ alvo in-game: {target_label(category)}"
+        )
+
+    def effective_game_size(self):
+        category = self.category_box.get()
+        return game_size_for(category)
+
     def open_gallery(self):
         if self.has_app():
             self.navigate("gallery")
@@ -401,6 +453,10 @@ class ProductionView(ForgeView):
 
         if resolution != self.config.get("generation", "default_resolution"):
             self.config.set("generation", "default_resolution", resolution)
+
+        batch = int(self.variations_box.get())
+        if batch != self.config.get("comfyui", "batch_size"):
+            self.config.set("comfyui", "batch_size", batch)
 
         enhanced_prompt = (
             f"{request}, {category.lower()} asset, "

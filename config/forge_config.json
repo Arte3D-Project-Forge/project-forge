@@ -37,14 +37,25 @@
         "colab_url": "https://colab.research.google.com/github/Arte3D-Project-Forge/project-forge/blob/main/colab/ComfyUI_Forge_Notebook.ipynb",
         "default_model": "pixelArtDiffusionXL_spriteShaper.safetensors",
         "steps": 28,
-        "cfg": 7,
+        "cfg": 5.5,
         "sampler": "dpmpp_2m",
         "scheduler": "karras",
-        "workflow": "config/workflows/comfyui_sprite_workflow.json",
+        "workflow": "config/workflows/forge_studio_v1_workflow.json",
         "upscale_workflow": "config/workflows/comfyui_sprite_upscale_workflow.json",
         "upscale_model": "RealESRGAN_x4plus.pth",
-        "positive_suffix": "8-bit pixel art game sprite, hard pixels, crisp pixel clusters, flat colors, dithered shading, sharp edges, clean outlines, single subject, centered, full body, best quality",
-        "negative_prompt": "blurry, low quality, deformed, distorted, ugly, bad anatomy, watermark, text, logo, signature, realistic photo, 3d render, multiple subjects, cropped, out of frame, extra limbs, jpeg artifacts, noise, duplicate, monochrome, painterly, painting, brush strokes, smooth, gradient, soft edges, anti-aliasing, illustration, watercolor, oil painting, digital painting, airbrush"
+        "batch_size": 4,
+        "positive_suffix": "professional indie RPG sprite, masterpiece, best quality, unified cohesive pixel art style inspired by Ragnarok Online, Zelda Link to the Past, Final Fantasy VI and Digimon, vibrant harmonious fantasy color palette with deep greens, warm browns, bright blues/purples and golden accents, clean sharp pixel lines, perfect subtle dithering, soft cel-shading, consistent art direction across all assets, transparent background, game-ready asset, single subject, centered, full body",
+        "negative_prompt": "blurry, lowres, deformed, bad anatomy, extra limbs, jpeg artifacts, different art style, realistic, 3d, photorealistic, oversaturated, inconsistent lighting, watermark, text, logo, signature, multiple subjects, cropped, out of frame, monochrome, illustration, painting"
+    },
+    "studio_pro": {
+        "master_prompt": "professional indie RPG sprite, masterpiece, best quality, unified cohesive pixel art style inspired by Ragnarok Online, Zelda Link to the Past, Final Fantasy VI and Digimon, vibrant harmonious fantasy color palette with deep greens, warm browns, bright blues/purples and golden accents, clean sharp pixel lines, perfect subtle dithering, soft cel-shading, consistent art direction across all assets, transparent background, game-ready asset",
+        "negative_prompt": "blurry, lowres, deformed, bad anatomy, extra limbs, jpeg artifacts, different art style, realistic, 3d, photorealistic, oversaturated, inconsistent lighting",
+        "sampler_steps": 28,
+        "sampler_cfg": 5.5,
+        "sampler_name": "dpmpp_2m",
+        "scheduler": "karras",
+        "denoise_character": 0.6,
+        "denoise_mob": 0.55
     },
     "generation": {
         "default_resolution": "1024x1024",

@@ -58,6 +58,7 @@ class ComfyUIProvider(ImageProvider):
             "style_suffix",
             "pixel art, game asset, 16bit, rpg style, high quality, detailed, sharp pixels"
         )
+        self.batch_size = int(comfyui_cfg.get("batch_size", 4) or 4)
 
         resolution = generation_cfg.get(
             "default_resolution", "512x512"
@@ -199,6 +200,7 @@ class ComfyUIProvider(ImageProvider):
             "__CFG__": self.cfg,
             "__SAMPLER__": self.sampler,
             "__SCHEDULER__": self.scheduler,
+            "__BATCH__": self.batch_size,
             "__FILENAME_PREFIX__": "forge_output"
         }
 

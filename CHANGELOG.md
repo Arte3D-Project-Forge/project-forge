@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.3.1 (01/08/2026)
+
+### Novo: Workflow Studio Pro v1 — qualidade nível estúdio
+- **Workflow ComfyUI profissional** (`forge_studio_v1_workflow.json`): prompt
+  mestre + negative fixo + batch de 4 variações + sampler otimizado
+  (DPM++ 2M Karras, CFG 5.5, steps 28).
+- **Prompt Mestre Studio Pro** integrado: estilo inspirado em Ragnarok
+  Online, Zelda LttP, FF VI e Digimon, paleta harmoniosa, dithering e
+  cel-shading — consistência entre todos os assets.
+- **Preset "Studio Pro"** adicionado ao Forge (primeiro da lista).
+- **Resoluções por categoria** (`category_specs.py`): Character 64x64,
+  Mob/Pet/Item 32x32, Tiles/Dungeon 16x16 — com hint na UI.
+- **Seletor de variações (batch)** na UI: 1 / 2 / 4 variações por job.
+- **Stable Horde** agora usa o prompt mestre + negative do Studio Pro.
+- **Notebook Colab**: nova célula baixa o workflow Studio Pro do GitHub
+  automaticamente antes de iniciar o servidor.
+- Config: `comfyui.steps=28`, `cfg=5.5`, `workflow=forge_studio_v1_workflow.json`,
+  `batch_size=4`; seção `studio_pro` com prompts mestre/negative.
+
 ## 0.3.0 (01/08/2026)
 
 ### Novo: Stable Horde — geracao de sprites GRATIS sem Colab

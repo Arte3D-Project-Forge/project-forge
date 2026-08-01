@@ -45,6 +45,24 @@ class StableHordeProvider(ImageProvider):
             or "0000000000"
         )
 
+        studio_cfg = config.config.get("studio_pro", {})
+        self.master_prompt = studio_cfg.get(
+            "master_prompt",
+            "professional indie RPG sprite, masterpiece, best quality, "
+            "unified cohesive pixel art style inspired by Ragnarok Online, "
+            "Zelda Link to the Past, Final Fantasy VI and Digimon, vibrant "
+            "harmonious fantasy color palette, clean sharp pixel lines, "
+            "perfect subtle dithering, soft cel-shading, consistent art "
+            "direction across all assets, transparent background, "
+            "game-ready asset"
+        )
+        self.negative_prompt = studio_cfg.get(
+            "negative_prompt",
+            "blurry, lowres, deformed, bad anatomy, extra limbs, jpeg "
+            "artifacts, different art style, realistic, 3d, photorealistic, "
+            "oversaturated, inconsistent lighting"
+        )
+
     def _headers(self):
         return {
             "User-Agent": "ProjectForge/0.1 (https://projectforge.local)",
@@ -123,6 +141,10 @@ class StableHordeProvider(ImageProvider):
             return None
 
     def _submit(self, prompt):
+        full_prompt = prompt.strip()
+        if self.master_prompt and self.master_prompt not in full_prompt:
+            full_prompt = f"{full_prompt}, {self.master_prompt}"
+
         for attempt in range(2):
             if attempt == 1:
                 # 1024x1024 anonimo pode exigir kudos; tenta 512x512.
@@ -130,14 +152,15 @@ class StableHordeProvider(ImageProvider):
             else:
                 width, height = self.width, self.height
             payload = {
-                "prompt": prompt,
+                "prompt": full_prompt,
                 "model": self.model,
                 "params": {
                     "width": width,
                     "height": height,
-                    "steps": 24,
-                    "cfg_scale": 7.0,
+                    "steps": 28,
+                    "cfg_scale": 5.5,
                     "sampler_name": "k_euler_a",
+                    "negative_prompt": self.negative_prompt,
                 },
                 "nsfw": False,
                 "slow_workers": True,
